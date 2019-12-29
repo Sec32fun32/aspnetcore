@@ -1,25 +1,12 @@
-# Manually implemented - https://github.com/dotnet/arcade/pull/2033
-T:Microsoft.AspNetCore.Components.RenderTree.RenderTreeFrame
-# Manually implemented - https://github.com/dotnet/arcade/issues/2066
-T:Microsoft.AspNetCore.Mvc.ApplicationModels.PageParameterModel
-T:Microsoft.AspNetCore.Mvc.ApplicationModels.PagePropertyModel
-# Manually implemented - Need to include internal setter
-P:Microsoft.AspNetCore.Mvc.Razor.Infrastructure.TagHelperMemoryCacheProvider.Cache
-P:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions
-P:Microsoft.AspNetCore.Routing.Matching.CandidateState.Values
-P:Microsoft.AspNetCore.Server.Kestrel.Core.ListenOptions.KestrelServerOptions
-# public structs with public fields that GenAPI doesn't handle
-T:Microsoft.AspNetCore.Components.EventCallback
-T:Microsoft.AspNetCore.Components.EventCallback`1
-# Break GenAPI - https://github.com/dotnet/arcade/issues/4488
-T:Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.<CreateInitialRenderAsync>d__17
-T:Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.<RenderComponentAsync>d__8
-T:Microsoft.AspNetCore.Mvc.ApplicationModels.ActionAttributeRouteModel.<>c
-T:Microsoft.AspNetCore.Mvc.ApplicationModels.ActionAttributeRouteModel.<GetAttributeRoutes>d__3
-T:Microsoft.AspNetCore.Mvc.ControllerBase.<TryUpdateModelAsync>d__181`1
-T:Microsoft.AspNetCore.Mvc.ControllerBase.<TryUpdateModelAsync>d__183`1
-T:Microsoft.AspNetCore.Mvc.ControllerBase.<TryUpdateModelAsync>d__184`1
-T:Microsoft.AspNetCore.Mvc.ControllerBase.<TryUpdateModelAsync>d__187
-T:Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0
-T:Microsoft.AspNetCore.Mvc.ModelBinding.CompositeValueProvider.<TryCreateAsync>d__4
-T:Microsoft.AspNetCore.Mvc.Routing.ConsumesMatcherPolicy.<>c
+# Excluded to avoid conflicts between System.Buffers.dll and MessagePack submodule
+T:System.Buffers.SequenceReaderExtensions
+T:System.Buffers.SequenceReader`1
+# Manually implemented - https://github.com/dotnet/arcade/issues/4488 problem (5), #nullable not generated.
+T:Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker
+M:Microsoft.AspNetCore.Mvc.MvcCoreLoggerExtensions.ActionScope(Microsoft.Extensions.Logging.ILogger,Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor)
+M:Microsoft.AspNetCore.Mvc.ViewFeatures.MvcViewFeaturesLoggerExtensions.ViewComponentScope(Microsoft.Extensions.Logging.ILogger,Microsoft.AspNetCore.Mvc.ViewComponents.ViewComponentContext)
+# As above but relevant only when using GenAPI with --all because these methods are private.
+M:Microsoft.AspNetCore.Mvc.ViewComponents.DefaultViewComponentInvoker.InvokeAsyncCore(Microsoft.Extensions.Internal.ObjectMethodExecutor,Microsoft.AspNetCore.Mvc.ViewComponents.ViewComponentContext)
+M:Microsoft.AspNetCore.Mvc.ViewComponents.DefaultViewComponentInvoker.InvokeSyncCore(Microsoft.Extensions.Internal.ObjectMethodExecutor,Microsoft.AspNetCore.Mvc.ViewComponents.ViewComponentContext)
+# Manually implemented to avoid need to generate async keywords and await Task.Delay(...) statements everywhere.
+M:Microsoft.AspNetCore.SignalR.Internal.AsyncEnumerableAdapters.MakeAsyncEnumerableFromChannel``1(System.Threading.Channels.ChannelReader{``0},System.Threading.CancellationToken)
