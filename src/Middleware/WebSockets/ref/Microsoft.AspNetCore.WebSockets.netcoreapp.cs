@@ -11,9 +11,9 @@ namespace Microsoft.AspNetCore.Builder
     public partial class WebSocketOptions
     {
         public WebSocketOptions() { }
-        public System.Collections.Generic.IList<string> AllowedOrigins { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.TimeSpan KeepAliveInterval { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int ReceiveBufferSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.IList<string> AllowedOrigins { get { throw null; } }
+        public System.TimeSpan KeepAliveInterval { get { throw null; } set { } }
+        public int ReceiveBufferSize { get { throw null; } set { } }
     }
 }
 namespace Microsoft.AspNetCore.WebSockets
@@ -21,9 +21,9 @@ namespace Microsoft.AspNetCore.WebSockets
     public partial class ExtendedWebSocketAcceptContext : Microsoft.AspNetCore.Http.WebSocketAcceptContext
     {
         public ExtendedWebSocketAcceptContext() { }
-        public System.TimeSpan? KeepAliveInterval { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int? ReceiveBufferSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public override string SubProtocol { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.TimeSpan? KeepAliveInterval { get { throw null; } set { } }
+        public int? ReceiveBufferSize { get { throw null; } set { } }
+        public override string SubProtocol { get { throw null; } set { } }
     }
     public partial class WebSocketMiddleware
     {

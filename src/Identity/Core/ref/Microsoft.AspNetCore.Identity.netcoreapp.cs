@@ -16,16 +16,16 @@ namespace Microsoft.AspNetCore.Identity
     public partial class DataProtectionTokenProviderOptions
     {
         public DataProtectionTokenProviderOptions() { }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.TimeSpan TokenLifespan { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { get { throw null; } set { } }
+        public System.TimeSpan TokenLifespan { get { throw null; } set { } }
     }
     public partial class DataProtectorTokenProvider<TUser> : Microsoft.AspNetCore.Identity.IUserTwoFactorTokenProvider<TUser> where TUser : class
     {
         public DataProtectorTokenProvider(Microsoft.AspNetCore.DataProtection.IDataProtectionProvider dataProtectionProvider, Microsoft.Extensions.Options.IOptions<Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions> options, Microsoft.Extensions.Logging.ILogger<Microsoft.AspNetCore.Identity.DataProtectorTokenProvider<TUser>> logger) { }
-        public Microsoft.Extensions.Logging.ILogger<Microsoft.AspNetCore.Identity.DataProtectorTokenProvider<TUser>> Logger { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.Extensions.Logging.ILogger<Microsoft.AspNetCore.Identity.DataProtectorTokenProvider<TUser>> Logger { get { throw null; } }
         public string Name { get { throw null; } }
-        protected Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions Options { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        protected Microsoft.AspNetCore.DataProtection.IDataProtector Protector { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        protected Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions Options { get { throw null; } }
+        protected Microsoft.AspNetCore.DataProtection.IDataProtector Protector { get { throw null; } }
         public virtual System.Threading.Tasks.Task<bool> CanGenerateTwoFactorTokenAsync(Microsoft.AspNetCore.Identity.UserManager<TUser> manager, TUser user) { throw null; }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task<string> GenerateAsync(string purpose, Microsoft.AspNetCore.Identity.UserManager<TUser> manager, TUser user) { throw null; }
@@ -35,9 +35,9 @@ namespace Microsoft.AspNetCore.Identity
     public partial class ExternalLoginInfo : Microsoft.AspNetCore.Identity.UserLoginInfo
     {
         public ExternalLoginInfo(System.Security.Claims.ClaimsPrincipal principal, string loginProvider, string providerKey, string displayName) : base (default(string), default(string), default(string)) { }
-        public Microsoft.AspNetCore.Authentication.AuthenticationProperties AuthenticationProperties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Authentication.AuthenticationToken> AuthenticationTokens { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Security.Claims.ClaimsPrincipal Principal { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Authentication.AuthenticationProperties AuthenticationProperties { get { throw null; } set { } }
+        public System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Authentication.AuthenticationToken> AuthenticationTokens { get { throw null; } set { } }
+        public System.Security.Claims.ClaimsPrincipal Principal { get { throw null; } set { } }
     }
     public static partial class IdentityBuilderExtensions
     {
@@ -65,10 +65,10 @@ namespace Microsoft.AspNetCore.Identity
     public partial class IdentityCookiesBuilder
     {
         public IdentityCookiesBuilder() { }
-        public Microsoft.Extensions.Options.OptionsBuilder<Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions> ApplicationCookie { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Extensions.Options.OptionsBuilder<Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions> ExternalCookie { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Extensions.Options.OptionsBuilder<Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions> TwoFactorRememberMeCookie { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Extensions.Options.OptionsBuilder<Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions> TwoFactorUserIdCookie { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Extensions.Options.OptionsBuilder<Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions> ApplicationCookie { get { throw null; } set { } }
+        public Microsoft.Extensions.Options.OptionsBuilder<Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions> ExternalCookie { get { throw null; } set { } }
+        public Microsoft.Extensions.Options.OptionsBuilder<Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions> TwoFactorRememberMeCookie { get { throw null; } set { } }
+        public Microsoft.Extensions.Options.OptionsBuilder<Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions> TwoFactorUserIdCookie { get { throw null; } set { } }
     }
     public partial interface ISecurityStampValidator
     {
@@ -77,11 +77,21 @@ namespace Microsoft.AspNetCore.Identity
     public partial interface ITwoFactorSecurityStampValidator : Microsoft.AspNetCore.Identity.ISecurityStampValidator
     {
     }
+    internal static partial class Resources
+    {
+        internal static System.Globalization.CultureInfo Culture { get { throw null; } set { } }
+        internal static string InvalidManagerType { get { throw null; } }
+        internal static string InvalidPasswordHasherCompatibilityMode { get { throw null; } }
+        internal static string InvalidPasswordHasherIterationCount { get { throw null; } }
+        internal static System.Resources.ResourceManager ResourceManager { get { throw null; } }
+        internal static string FormatInvalidManagerType(object p0, object p1, object p2) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]internal static string GetResourceString(string resourceKey, string defaultValue = null) { throw null; }
+    }
     public partial class SecurityStampRefreshingPrincipalContext
     {
         public SecurityStampRefreshingPrincipalContext() { }
-        public System.Security.Claims.ClaimsPrincipal CurrentPrincipal { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Security.Claims.ClaimsPrincipal NewPrincipal { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Security.Claims.ClaimsPrincipal CurrentPrincipal { get { throw null; } set { } }
+        public System.Security.Claims.ClaimsPrincipal NewPrincipal { get { throw null; } set { } }
     }
     public static partial class SecurityStampValidator
     {
@@ -91,16 +101,16 @@ namespace Microsoft.AspNetCore.Identity
     public partial class SecurityStampValidatorOptions
     {
         public SecurityStampValidatorOptions() { }
-        public System.Func<Microsoft.AspNetCore.Identity.SecurityStampRefreshingPrincipalContext, System.Threading.Tasks.Task> OnRefreshingPrincipal { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.TimeSpan ValidationInterval { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Func<Microsoft.AspNetCore.Identity.SecurityStampRefreshingPrincipalContext, System.Threading.Tasks.Task> OnRefreshingPrincipal { get { throw null; } set { } }
+        public System.TimeSpan ValidationInterval { get { throw null; } set { } }
     }
     public partial class SecurityStampValidator<TUser> : Microsoft.AspNetCore.Identity.ISecurityStampValidator where TUser : class
     {
         public SecurityStampValidator(Microsoft.Extensions.Options.IOptions<Microsoft.AspNetCore.Identity.SecurityStampValidatorOptions> options, Microsoft.AspNetCore.Identity.SignInManager<TUser> signInManager, Microsoft.AspNetCore.Authentication.ISystemClock clock, Microsoft.Extensions.Logging.ILoggerFactory logger) { }
-        public Microsoft.AspNetCore.Authentication.ISystemClock Clock { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Extensions.Logging.ILogger Logger { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Identity.SecurityStampValidatorOptions Options { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Identity.SignInManager<TUser> SignInManager { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Authentication.ISystemClock Clock { get { throw null; } }
+        public Microsoft.Extensions.Logging.ILogger Logger { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Identity.SecurityStampValidatorOptions Options { get { throw null; } }
+        public Microsoft.AspNetCore.Identity.SignInManager<TUser> SignInManager { get { throw null; } }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         protected virtual System.Threading.Tasks.Task SecurityStampVerified(TUser user, Microsoft.AspNetCore.Authentication.Cookies.CookieValidatePrincipalContext context) { throw null; }
         [System.Diagnostics.DebuggerStepThroughAttribute]
@@ -110,11 +120,11 @@ namespace Microsoft.AspNetCore.Identity
     public partial class SignInManager<TUser> where TUser : class
     {
         public SignInManager(Microsoft.AspNetCore.Identity.UserManager<TUser> userManager, Microsoft.AspNetCore.Http.IHttpContextAccessor contextAccessor, Microsoft.AspNetCore.Identity.IUserClaimsPrincipalFactory<TUser> claimsFactory, Microsoft.Extensions.Options.IOptions<Microsoft.AspNetCore.Identity.IdentityOptions> optionsAccessor, Microsoft.Extensions.Logging.ILogger<Microsoft.AspNetCore.Identity.SignInManager<TUser>> logger, Microsoft.AspNetCore.Authentication.IAuthenticationSchemeProvider schemes, Microsoft.AspNetCore.Identity.IUserConfirmation<TUser> confirmation) { }
-        public Microsoft.AspNetCore.Identity.IUserClaimsPrincipalFactory<TUser> ClaimsFactory { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Identity.IUserClaimsPrincipalFactory<TUser> ClaimsFactory { get { throw null; } set { } }
         public Microsoft.AspNetCore.Http.HttpContext Context { get { throw null; } set { } }
-        public virtual Microsoft.Extensions.Logging.ILogger Logger { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Identity.IdentityOptions Options { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Identity.UserManager<TUser> UserManager { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public virtual Microsoft.Extensions.Logging.ILogger Logger { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Identity.IdentityOptions Options { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Identity.UserManager<TUser> UserManager { get { throw null; } set { } }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task<bool> CanSignInAsync(TUser user) { throw null; }
         [System.Diagnostics.DebuggerStepThroughAttribute]
@@ -160,6 +170,9 @@ namespace Microsoft.AspNetCore.Identity
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task SignOutAsync() { throw null; }
         [System.Diagnostics.DebuggerStepThroughAttribute]
+        internal System.Threading.Tasks.Task<System.Security.Claims.ClaimsPrincipal> StoreRememberClient(TUser user) { throw null; }
+        internal System.Security.Claims.ClaimsPrincipal StoreTwoFactorInfo(string userId, string loginProvider) { throw null; }
+        [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task<Microsoft.AspNetCore.Identity.SignInResult> TwoFactorAuthenticatorSignInAsync(string code, bool isPersistent, bool rememberClient) { throw null; }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task<Microsoft.AspNetCore.Identity.SignInResult> TwoFactorRecoveryCodeSignInAsync(string recoveryCode) { throw null; }
@@ -173,6 +186,20 @@ namespace Microsoft.AspNetCore.Identity
         public virtual System.Threading.Tasks.Task<bool> ValidateSecurityStampAsync(TUser user, string securityStamp) { throw null; }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task<TUser> ValidateTwoFactorSecurityStampAsync(System.Security.Claims.ClaimsPrincipal principal) { throw null; }
+        internal partial class TwoFactorAuthenticationInfo
+        {
+            public TwoFactorAuthenticationInfo() { }
+            public string LoginProvider { get { throw null; } set { } }
+            public string UserId { get { throw null; } set { } }
+        }
+    }
+    internal static partial class StreamExtensions
+    {
+        internal static readonly System.Text.Encoding DefaultEncoding;
+        public static System.IO.BinaryReader CreateReader(this System.IO.Stream stream) { throw null; }
+        public static System.IO.BinaryWriter CreateWriter(this System.IO.Stream stream) { throw null; }
+        public static System.DateTimeOffset ReadDateTimeOffset(this System.IO.BinaryReader reader) { throw null; }
+        public static void Write(this System.IO.BinaryWriter writer, System.DateTimeOffset value) { }
     }
     public partial class TwoFactorSecurityStampValidator<TUser> : Microsoft.AspNetCore.Identity.SecurityStampValidator<TUser>, Microsoft.AspNetCore.Identity.ISecurityStampValidator, Microsoft.AspNetCore.Identity.ITwoFactorSecurityStampValidator where TUser : class
     {
@@ -189,5 +216,18 @@ namespace Microsoft.Extensions.DependencyInjection
         public static Microsoft.AspNetCore.Identity.IdentityBuilder AddIdentity<TUser, TRole>(this Microsoft.Extensions.DependencyInjection.IServiceCollection services, System.Action<Microsoft.AspNetCore.Identity.IdentityOptions> setupAction) where TUser : class where TRole : class { throw null; }
         public static Microsoft.Extensions.DependencyInjection.IServiceCollection ConfigureApplicationCookie(this Microsoft.Extensions.DependencyInjection.IServiceCollection services, System.Action<Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions> configure) { throw null; }
         public static Microsoft.Extensions.DependencyInjection.IServiceCollection ConfigureExternalCookie(this Microsoft.Extensions.DependencyInjection.IServiceCollection services, System.Action<Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions> configure) { throw null; }
+    }
+}
+namespace Microsoft.Extensions.Logging
+{
+    internal static partial class LoggingExtensions
+    {
+        public static void InvalidExpirationTime(this Microsoft.Extensions.Logging.ILogger logger) { }
+        public static void PurposeNotEquals(this Microsoft.Extensions.Logging.ILogger logger, string actualPurpose, string expectedPurpose) { }
+        public static void SecurityStampIsNotEmpty(this Microsoft.Extensions.Logging.ILogger logger) { }
+        public static void SequrityStampNotEquals(this Microsoft.Extensions.Logging.ILogger logger) { }
+        public static void UnexpectedEndOfInput(this Microsoft.Extensions.Logging.ILogger logger) { }
+        public static void UnhandledException(this Microsoft.Extensions.Logging.ILogger logger) { }
+        public static void UserIdsNotEquals(this Microsoft.Extensions.Logging.ILogger logger) { }
     }
 }

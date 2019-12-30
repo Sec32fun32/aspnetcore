@@ -27,39 +27,44 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     {
         public AnchorTagHelper(Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator generator) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-action")]
-        public string Action { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Action { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-area")]
-        public string Area { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Area { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-controller")]
-        public string Controller { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Controller { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-fragment")]
-        public string Fragment { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Fragment { get { throw null; } set { } }
+        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-host")]
-        public string Host { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Host { get { throw null; } set { } }
         public override int Order { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-page")]
-        public string Page { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Page { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-page-handler")]
-        public string PageHandler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string PageHandler { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-protocol")]
-        public string Protocol { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Protocol { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-route")]
-        public string Route { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Route { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-all-route-data", DictionaryAttributePrefix="asp-route-")]
         public System.Collections.Generic.IDictionary<string, string> RouteValues { get { throw null; } set { } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
         public override void Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { }
+    }
+    internal static partial class AttributeMatcher
+    {
+        public static bool TryDetermineMode<TMode>(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, System.Collections.Generic.IReadOnlyList<Microsoft.AspNetCore.Mvc.TagHelpers.ModeAttributes<TMode>> modeInfos, System.Func<TMode, TMode, int> compare, out TMode result) { throw null; }
     }
     public partial class CacheTagHelper : Microsoft.AspNetCore.Mvc.TagHelpers.CacheTagHelperBase
     {
         public static readonly string CacheKeyPrefix;
         public CacheTagHelper(Microsoft.AspNetCore.Mvc.TagHelpers.CacheTagHelperMemoryCacheFactory factory, System.Text.Encodings.Web.HtmlEncoder htmlEncoder) : base (default(System.Text.Encodings.Web.HtmlEncoder)) { }
-        protected Microsoft.Extensions.Caching.Memory.IMemoryCache MemoryCache { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        protected Microsoft.Extensions.Caching.Memory.IMemoryCache MemoryCache { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("priority")]
-        public Microsoft.Extensions.Caching.Memory.CacheItemPriority? Priority { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Extensions.Caching.Memory.CacheItemPriority? Priority { get { throw null; } set { } }
+        internal Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions GetMemoryCacheEntryOptions() { throw null; }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public override System.Threading.Tasks.Task ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { throw null; }
     }
@@ -68,79 +73,105 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         public static readonly System.TimeSpan DefaultExpiration;
         public CacheTagHelperBase(System.Text.Encodings.Web.HtmlEncoder htmlEncoder) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("enabled")]
-        public bool Enabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool Enabled { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("expires-after")]
-        public System.TimeSpan? ExpiresAfter { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.TimeSpan? ExpiresAfter { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("expires-on")]
-        public System.DateTimeOffset? ExpiresOn { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.DateTimeOffset? ExpiresOn { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("expires-sliding")]
-        public System.TimeSpan? ExpiresSliding { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected System.Text.Encodings.Web.HtmlEncoder HtmlEncoder { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.TimeSpan? ExpiresSliding { get { throw null; } set { } }
+        protected System.Text.Encodings.Web.HtmlEncoder HtmlEncoder { get { throw null; } }
         public override int Order { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("vary-by")]
-        public string VaryBy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string VaryBy { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("vary-by-cookie")]
-        public string VaryByCookie { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string VaryByCookie { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("vary-by-culture")]
-        public bool VaryByCulture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool VaryByCulture { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("vary-by-header")]
-        public string VaryByHeader { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string VaryByHeader { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("vary-by-query")]
-        public string VaryByQuery { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string VaryByQuery { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("vary-by-route")]
-        public string VaryByRoute { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string VaryByRoute { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("vary-by-user")]
-        public bool VaryByUser { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool VaryByUser { get { throw null; } set { } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
     }
     public partial class CacheTagHelperMemoryCacheFactory
     {
+        internal CacheTagHelperMemoryCacheFactory(Microsoft.Extensions.Caching.Memory.IMemoryCache cache) { }
         public CacheTagHelperMemoryCacheFactory(Microsoft.Extensions.Options.IOptions<Microsoft.AspNetCore.Mvc.TagHelpers.CacheTagHelperOptions> options) { }
-        public Microsoft.Extensions.Caching.Memory.IMemoryCache Cache { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.Extensions.Caching.Memory.IMemoryCache Cache { get { throw null; } }
     }
     public partial class CacheTagHelperOptions
     {
         public CacheTagHelperOptions() { }
-        public long SizeLimit { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public long SizeLimit { get { throw null; } set { } }
     }
     [Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute("component", Attributes="type", TagStructure=Microsoft.AspNetCore.Razor.TagHelpers.TagStructure.WithoutEndTag)]
     public sealed partial class ComponentTagHelper : Microsoft.AspNetCore.Razor.TagHelpers.TagHelper
     {
         public ComponentTagHelper() { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("type")]
-        public System.Type ComponentType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Type ComponentType { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("params", DictionaryAttributePrefix="param-")]
         public System.Collections.Generic.IDictionary<string, object> Parameters { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("render-mode")]
         public Microsoft.AspNetCore.Mvc.Rendering.RenderMode RenderMode { get { throw null; } set { } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public override System.Threading.Tasks.Task ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { throw null; }
+    }
+    internal partial class CurrentValues
+    {
+        public CurrentValues(System.Collections.Generic.ICollection<string> values) { }
+        public System.Collections.Generic.ICollection<string> Values { get { throw null; } }
+        public System.Collections.Generic.ICollection<string> ValuesAndEncodedValues { get { throw null; } set { } }
     }
     [Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute("distributed-cache", Attributes="name")]
     public partial class DistributedCacheTagHelper : Microsoft.AspNetCore.Mvc.TagHelpers.CacheTagHelperBase
     {
         public static readonly string CacheKeyPrefix;
         public DistributedCacheTagHelper(Microsoft.AspNetCore.Mvc.TagHelpers.Cache.IDistributedCacheTagHelperService distributedCacheService, System.Text.Encodings.Web.HtmlEncoder htmlEncoder) : base (default(System.Text.Encodings.Web.HtmlEncoder)) { }
-        protected Microsoft.Extensions.Caching.Memory.IMemoryCache MemoryCache { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        protected Microsoft.Extensions.Caching.Memory.IMemoryCache MemoryCache { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("name")]
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { get { throw null; } set { } }
+        internal Microsoft.Extensions.Caching.Distributed.DistributedCacheEntryOptions GetDistributedCacheEntryOptions() { throw null; }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public override System.Threading.Tasks.Task ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { throw null; }
     }
     public partial class EnvironmentTagHelper : Microsoft.AspNetCore.Razor.TagHelpers.TagHelper
     {
         public EnvironmentTagHelper(Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnvironment) { }
-        public string Exclude { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Include { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Names { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Exclude { get { throw null; } set { } }
+        protected Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment { get { throw null; } }
+        public string Include { get { throw null; } set { } }
+        public string Names { get { throw null; } set { } }
         public override int Order { get { throw null; } }
         public override void Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { }
+    }
+    internal partial class FileProviderGlobbingDirectory : Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoBase
+    {
+        public FileProviderGlobbingDirectory(Microsoft.Extensions.FileProviders.IFileProvider fileProvider, Microsoft.Extensions.FileProviders.IFileInfo fileInfo, Microsoft.AspNetCore.Mvc.TagHelpers.FileProviderGlobbingDirectory parent) { }
+        public override string FullName { get { throw null; } }
+        public override string Name { get { throw null; } }
+        public override Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoBase ParentDirectory { get { throw null; } }
+        public string RelativePath { get { throw null; } }
+        public override System.Collections.Generic.IEnumerable<Microsoft.Extensions.FileSystemGlobbing.Abstractions.FileSystemInfoBase> EnumerateFileSystemInfos() { throw null; }
+        public override Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoBase GetDirectory(string path) { throw null; }
+        public override Microsoft.Extensions.FileSystemGlobbing.Abstractions.FileInfoBase GetFile(string path) { throw null; }
+    }
+    internal partial class FileProviderGlobbingFile : Microsoft.Extensions.FileSystemGlobbing.Abstractions.FileInfoBase
+    {
+        public FileProviderGlobbingFile(Microsoft.Extensions.FileProviders.IFileInfo fileInfo, Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoBase parent) { }
+        public override string FullName { get { throw null; } }
+        public override string Name { get { throw null; } }
+        public override Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoBase ParentDirectory { get { throw null; } }
     }
     [Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute("button", Attributes="asp-action")]
     [Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute("button", Attributes="asp-all-route-data")]
@@ -173,26 +204,26 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     {
         public FormActionTagHelper(Microsoft.AspNetCore.Mvc.Routing.IUrlHelperFactory urlHelperFactory) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-action")]
-        public string Action { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Action { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-area")]
-        public string Area { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Area { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-controller")]
-        public string Controller { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Controller { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-fragment")]
-        public string Fragment { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Fragment { get { throw null; } set { } }
         public override int Order { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-page")]
-        public string Page { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Page { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-page-handler")]
-        public string PageHandler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string PageHandler { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-route")]
-        public string Route { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Route { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-all-route-data", DictionaryAttributePrefix="asp-route-")]
         public System.Collections.Generic.IDictionary<string, string> RouteValues { get { throw null; } set { } }
-        protected Microsoft.AspNetCore.Mvc.Routing.IUrlHelperFactory UrlHelperFactory { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        protected Microsoft.AspNetCore.Mvc.Routing.IUrlHelperFactory UrlHelperFactory { get { throw null; } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
         public override void Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { }
     }
     [Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute("form")]
@@ -200,38 +231,39 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     {
         public FormTagHelper(Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator generator) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-action")]
-        public string Action { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Action { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-antiforgery")]
-        public bool? Antiforgery { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool? Antiforgery { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-area")]
-        public string Area { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Area { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-controller")]
-        public string Controller { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Controller { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-fragment")]
-        public string Fragment { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Fragment { get { throw null; } set { } }
+        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { get { throw null; } }
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        public string Method { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Method { get { throw null; } set { } }
         public override int Order { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-page")]
-        public string Page { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Page { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-page-handler")]
-        public string PageHandler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string PageHandler { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-route")]
-        public string Route { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Route { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-all-route-data", DictionaryAttributePrefix="asp-route-")]
         public System.Collections.Generic.IDictionary<string, string> RouteValues { get { throw null; } set { } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
         public override void Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { }
     }
     public partial class GlobbingUrlBuilder
     {
         public GlobbingUrlBuilder(Microsoft.Extensions.FileProviders.IFileProvider fileProvider, Microsoft.Extensions.Caching.Memory.IMemoryCache cache, Microsoft.AspNetCore.Http.PathString requestPathBase) { }
-        public Microsoft.Extensions.Caching.Memory.IMemoryCache Cache { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Extensions.FileProviders.IFileProvider FileProvider { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Http.PathString RequestPathBase { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.Extensions.Caching.Memory.IMemoryCache Cache { get { throw null; } }
+        public Microsoft.Extensions.FileProviders.IFileProvider FileProvider { get { throw null; } }
+        internal System.Func<Microsoft.Extensions.FileSystemGlobbing.Matcher> MatcherBuilder { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Http.PathString RequestPathBase { get { throw null; } }
         public virtual System.Collections.Generic.IReadOnlyList<string> BuildUrlList(string staticUrl, string includePattern, string excludePattern) { throw null; }
     }
     [Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute("img", Attributes="asp-append-version,src", TagStructure=Microsoft.AspNetCore.Razor.TagHelpers.TagStructure.WithoutEndTag)]
@@ -242,14 +274,15 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         [Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructorAttribute]
         public ImageTagHelper(Microsoft.AspNetCore.Mvc.ViewFeatures.IFileVersionProvider fileVersionProvider, System.Text.Encodings.Web.HtmlEncoder htmlEncoder, Microsoft.AspNetCore.Mvc.Routing.IUrlHelperFactory urlHelperFactory) : base (default(Microsoft.AspNetCore.Mvc.Routing.IUrlHelperFactory), default(System.Text.Encodings.Web.HtmlEncoder)) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-append-version")]
-        public bool AppendVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool AppendVersion { get { throw null; } set { } }
         [System.ObsoleteAttribute("This property is obsolete and will be removed in a future version.")]
-        protected internal Microsoft.Extensions.Caching.Memory.IMemoryCache Cache { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        protected internal Microsoft.Extensions.Caching.Memory.IMemoryCache Cache { get { throw null; } }
+        internal Microsoft.AspNetCore.Mvc.ViewFeatures.IFileVersionProvider FileVersionProvider { get { throw null; } }
         [System.ObsoleteAttribute("This property is obsolete and will be removed in a future version.")]
-        protected internal Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        protected internal Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment { get { throw null; } }
         public override int Order { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("src")]
-        public string Src { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Src { get { throw null; } set { } }
         public override void Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { }
     }
     [Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute("input", Attributes="asp-for", TagStructure=Microsoft.AspNetCore.Razor.TagHelpers.TagStructure.WithoutEndTag)]
@@ -257,32 +290,37 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     {
         public InputTagHelper(Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator generator) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-for")]
-        public Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExpression For { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExpression For { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-format")]
-        public string Format { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Format { get { throw null; } set { } }
+        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("type")]
-        public string InputTypeName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string InputTypeName { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
         public override int Order { get { throw null; } }
-        public string Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Value { get { throw null; } set { } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
         protected string GetInputType(Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExplorer modelExplorer, out string inputTypeHint) { throw null; }
         public override void Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { }
+    }
+    internal static partial class JavaScriptResources
+    {
+        public static string GetEmbeddedJavaScript(string resourceName) { throw null; }
+        internal static string GetEmbeddedJavaScript(string resourceName, System.Func<string, System.IO.Stream> getManifestResourceStream, System.Collections.Concurrent.ConcurrentDictionary<string, string> cache) { throw null; }
     }
     [Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute("label", Attributes="asp-for")]
     public partial class LabelTagHelper : Microsoft.AspNetCore.Razor.TagHelpers.TagHelper
     {
         public LabelTagHelper(Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator generator) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-for")]
-        public Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExpression For { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExpression For { get { throw null; } set { } }
+        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { get { throw null; } }
         public override int Order { get { throw null; } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public override System.Threading.Tasks.Task ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { throw null; }
     }
@@ -299,43 +337,54 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     {
         public LinkTagHelper(Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnvironment, Microsoft.AspNetCore.Mvc.Razor.Infrastructure.TagHelperMemoryCacheProvider cacheProvider, Microsoft.AspNetCore.Mvc.ViewFeatures.IFileVersionProvider fileVersionProvider, System.Text.Encodings.Web.HtmlEncoder htmlEncoder, System.Text.Encodings.Web.JavaScriptEncoder javaScriptEncoder, Microsoft.AspNetCore.Mvc.Routing.IUrlHelperFactory urlHelperFactory) : base (default(Microsoft.AspNetCore.Mvc.Routing.IUrlHelperFactory), default(System.Text.Encodings.Web.HtmlEncoder)) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-append-version")]
-        public bool? AppendVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected internal Microsoft.Extensions.Caching.Memory.IMemoryCache Cache { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool? AppendVersion { get { throw null; } set { } }
+        protected internal Microsoft.Extensions.Caching.Memory.IMemoryCache Cache { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-fallback-href")]
-        public string FallbackHref { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string FallbackHref { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-fallback-href-exclude")]
-        public string FallbackHrefExclude { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string FallbackHrefExclude { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-fallback-href-include")]
-        public string FallbackHrefInclude { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string FallbackHrefInclude { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-fallback-test-class")]
-        public string FallbackTestClass { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string FallbackTestClass { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-fallback-test-property")]
-        public string FallbackTestProperty { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string FallbackTestProperty { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-fallback-test-value")]
-        public string FallbackTestValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected internal Microsoft.AspNetCore.Mvc.TagHelpers.GlobbingUrlBuilder GlobbingUrlBuilder { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected internal Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string FallbackTestValue { get { throw null; } set { } }
+        internal Microsoft.AspNetCore.Mvc.ViewFeatures.IFileVersionProvider FileVersionProvider { get { throw null; } }
+        protected internal Microsoft.AspNetCore.Mvc.TagHelpers.GlobbingUrlBuilder GlobbingUrlBuilder { get { throw null; } set { } }
+        protected internal Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("href")]
-        public string Href { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Href { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-href-exclude")]
-        public string HrefExclude { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string HrefExclude { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-href-include")]
-        public string HrefInclude { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected System.Text.Encodings.Web.JavaScriptEncoder JavaScriptEncoder { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string HrefInclude { get { throw null; } set { } }
+        protected System.Text.Encodings.Web.JavaScriptEncoder JavaScriptEncoder { get { throw null; } }
         public override int Order { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-suppress-fallback-integrity")]
-        public bool SuppressFallbackIntegrity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool SuppressFallbackIntegrity { get { throw null; } set { } }
         public override void Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { }
+    }
+    internal partial class ModeAttributes<TMode>
+    {
+        public ModeAttributes(TMode mode, string[] attributes) { }
+        public string[] Attributes { get { throw null; } }
+        public TMode Mode { get { throw null; } }
+    }
+    internal static partial class MvcTagHelperLoggerExtensions
+    {
+        public static void DistributedFormatterDeserializationException(this Microsoft.Extensions.Logging.ILogger logger, string key, System.Exception exception) { }
     }
     public partial class OptionTagHelper : Microsoft.AspNetCore.Razor.TagHelpers.TagHelper
     {
         public OptionTagHelper(Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator generator) { }
-        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { get { throw null; } }
         public override int Order { get { throw null; } }
-        public string Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Value { get { throw null; } set { } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public override System.Threading.Tasks.Task ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { throw null; }
     }
@@ -344,20 +393,21 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     {
         public PartialTagHelper(Microsoft.AspNetCore.Mvc.ViewEngines.ICompositeViewEngine viewEngine, Microsoft.AspNetCore.Mvc.ViewFeatures.Buffers.IViewBufferScope viewBufferScope) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("fallback-name")]
-        public string FallbackName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string FallbackName { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("for")]
         public Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExpression For { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("model")]
         public object Model { get { throw null; } set { } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("optional")]
-        public bool Optional { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool Optional { get { throw null; } set { } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ViewFeatures.ViewDataDictionary ViewData { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ViewFeatures.ViewDataDictionary ViewData { get { throw null; } set { } }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public override System.Threading.Tasks.Task ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { throw null; }
+        internal object ResolveModel() { throw null; }
     }
     [Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute("form")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
@@ -367,10 +417,47 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         public override int Order { get { throw null; } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
         public override void Init(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context) { }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public override System.Threading.Tasks.Task ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { throw null; }
+    }
+    internal static partial class Resources
+    {
+        internal static string AnchorTagHelper_CannotOverrideHref { get { throw null; } }
+        internal static string ArgumentCannotContainHtmlSpace { get { throw null; } }
+        internal static string AttributeIsRequired { get { throw null; } }
+        internal static string CannotDetermineAttributeFor { get { throw null; } }
+        internal static System.Globalization.CultureInfo Culture { get { throw null; } set { } }
+        internal static string FormActionTagHelper_CannotOverrideFormAction { get { throw null; } }
+        internal static string FormTagHelper_CannotOverrideAction { get { throw null; } }
+        internal static string InputTagHelper_InvalidExpressionResult { get { throw null; } }
+        internal static string InputTagHelper_InvalidStringResult { get { throw null; } }
+        internal static string InputTagHelper_ValueRequired { get { throw null; } }
+        internal static string InvalidEnumArgument { get { throw null; } }
+        internal static string PartialTagHelper_InvalidModelAttributes { get { throw null; } }
+        internal static string PropertyOfTypeCannotBeNull { get { throw null; } }
+        internal static System.Resources.ResourceManager ResourceManager { get { throw null; } }
+        internal static string TagHelperOutput_AttributeDoesNotExist { get { throw null; } }
+        internal static string TagHelpers_NoProvidedMetadata { get { throw null; } }
+        internal static string ViewEngine_FallbackViewNotFound { get { throw null; } }
+        internal static string ViewEngine_PartialViewNotFound { get { throw null; } }
+        internal static string FormatAnchorTagHelper_CannotOverrideHref(object p0, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8, object p9, object p10, object p11) { throw null; }
+        internal static string FormatAttributeIsRequired(object p0, object p1) { throw null; }
+        internal static string FormatCannotDetermineAttributeFor(object p0, object p1) { throw null; }
+        internal static string FormatFormActionTagHelper_CannotOverrideFormAction(object p0, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8, object p9) { throw null; }
+        internal static string FormatFormTagHelper_CannotOverrideAction(object p0, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8, object p9) { throw null; }
+        internal static string FormatInputTagHelper_InvalidExpressionResult(object p0, object p1, object p2, object p3, object p4, object p5, object p6) { throw null; }
+        internal static string FormatInputTagHelper_InvalidStringResult(object p0, object p1, object p2) { throw null; }
+        internal static string FormatInputTagHelper_ValueRequired(object p0, object p1, object p2, object p3) { throw null; }
+        internal static string FormatInvalidEnumArgument(object p0, object p1, object p2) { throw null; }
+        internal static string FormatPartialTagHelper_InvalidModelAttributes(object p0, object p1, object p2) { throw null; }
+        internal static string FormatPropertyOfTypeCannotBeNull(object p0, object p1) { throw null; }
+        internal static string FormatTagHelperOutput_AttributeDoesNotExist(object p0, object p1) { throw null; }
+        internal static string FormatTagHelpers_NoProvidedMetadata(object p0, object p1, object p2, object p3) { throw null; }
+        internal static string FormatViewEngine_FallbackViewNotFound(object p0, object p1) { throw null; }
+        internal static string FormatViewEngine_PartialViewNotFound(object p0, object p1) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]internal static string GetResourceString(string resourceKey, string defaultValue = null) { throw null; }
     }
     [Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute("script", Attributes="asp-append-version")]
     [Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute("script", Attributes="asp-fallback-src")]
@@ -383,28 +470,29 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     {
         public ScriptTagHelper(Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnvironment, Microsoft.AspNetCore.Mvc.Razor.Infrastructure.TagHelperMemoryCacheProvider cacheProvider, Microsoft.AspNetCore.Mvc.ViewFeatures.IFileVersionProvider fileVersionProvider, System.Text.Encodings.Web.HtmlEncoder htmlEncoder, System.Text.Encodings.Web.JavaScriptEncoder javaScriptEncoder, Microsoft.AspNetCore.Mvc.Routing.IUrlHelperFactory urlHelperFactory) : base (default(Microsoft.AspNetCore.Mvc.Routing.IUrlHelperFactory), default(System.Text.Encodings.Web.HtmlEncoder)) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-append-version")]
-        public bool? AppendVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected internal Microsoft.Extensions.Caching.Memory.IMemoryCache Cache { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool? AppendVersion { get { throw null; } set { } }
+        protected internal Microsoft.Extensions.Caching.Memory.IMemoryCache Cache { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-fallback-src")]
-        public string FallbackSrc { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string FallbackSrc { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-fallback-src-exclude")]
-        public string FallbackSrcExclude { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string FallbackSrcExclude { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-fallback-src-include")]
-        public string FallbackSrcInclude { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string FallbackSrcInclude { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-fallback-test")]
-        public string FallbackTestExpression { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected internal Microsoft.AspNetCore.Mvc.TagHelpers.GlobbingUrlBuilder GlobbingUrlBuilder { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected internal Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        protected System.Text.Encodings.Web.JavaScriptEncoder JavaScriptEncoder { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string FallbackTestExpression { get { throw null; } set { } }
+        internal Microsoft.AspNetCore.Mvc.ViewFeatures.IFileVersionProvider FileVersionProvider { get { throw null; } }
+        protected internal Microsoft.AspNetCore.Mvc.TagHelpers.GlobbingUrlBuilder GlobbingUrlBuilder { get { throw null; } set { } }
+        protected internal Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment { get { throw null; } }
+        protected System.Text.Encodings.Web.JavaScriptEncoder JavaScriptEncoder { get { throw null; } }
         public override int Order { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("src")]
-        public string Src { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Src { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-src-exclude")]
-        public string SrcExclude { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string SrcExclude { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-src-include")]
-        public string SrcInclude { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string SrcInclude { get { throw null; } set { } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-suppress-fallback-integrity")]
-        public bool SuppressFallbackIntegrity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool SuppressFallbackIntegrity { get { throw null; } set { } }
         public override void Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { }
     }
     [Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute("select", Attributes="asp-for")]
@@ -413,15 +501,15 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     {
         public SelectTagHelper(Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator generator) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-for")]
-        public Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExpression For { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExpression For { get { throw null; } set { } }
+        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-items")]
-        public System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> Items { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> Items { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
         public override int Order { get { throw null; } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
         public override void Init(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context) { }
         public override void Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { }
     }
@@ -438,13 +526,13 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     {
         public TextAreaTagHelper(Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator generator) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-for")]
-        public Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExpression For { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExpression For { get { throw null; } set { } }
+        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { get { throw null; } }
+        public string Name { get { throw null; } set { } }
         public override int Order { get { throw null; } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
         public override void Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { }
     }
     [Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute("span", Attributes="asp-validation-for")]
@@ -452,12 +540,12 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     {
         public ValidationMessageTagHelper(Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator generator) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-validation-for")]
-        public Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExpression For { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExpression For { get { throw null; } set { } }
+        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { get { throw null; } }
         public override int Order { get { throw null; } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public override System.Threading.Tasks.Task ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { throw null; }
     }
@@ -466,13 +554,13 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     {
         public ValidationSummaryTagHelper(Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator generator) { }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        protected Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator Generator { get { throw null; } }
         public override int Order { get { throw null; } }
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNameAttribute("asp-validation-summary")]
         public Microsoft.AspNetCore.Mvc.Rendering.ValidationSummary ValidationSummary { get { throw null; } set { } }
         [Microsoft.AspNetCore.Mvc.ViewFeatures.ViewContextAttribute]
         [Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeNotBoundAttribute]
-        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Rendering.ViewContext ViewContext { get { throw null; } set { } }
         public override void Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput output) { }
     }
 }
@@ -482,6 +570,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers.Cache
     {
         public CacheTagKey(Microsoft.AspNetCore.Mvc.TagHelpers.CacheTagHelper tagHelper, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext context) { }
         public CacheTagKey(Microsoft.AspNetCore.Mvc.TagHelpers.DistributedCacheTagHelper tagHelper) { }
+        internal string Key { get { throw null; } }
         public bool Equals(Microsoft.AspNetCore.Mvc.TagHelpers.Cache.CacheTagKey other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public string GenerateHashedKey() { throw null; }
@@ -497,7 +586,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers.Cache
     public partial class DistributedCacheTagHelperFormattingContext
     {
         public DistributedCacheTagHelperFormattingContext() { }
-        public Microsoft.AspNetCore.Html.HtmlString Html { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Html.HtmlString Html { get { throw null; } set { } }
     }
     public partial class DistributedCacheTagHelperService : Microsoft.AspNetCore.Mvc.TagHelpers.Cache.IDistributedCacheTagHelperService
     {
@@ -533,5 +622,6 @@ namespace Microsoft.Extensions.DependencyInjection
         public static Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder AddCacheTagHelper(this Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder builder) { throw null; }
         public static Microsoft.Extensions.DependencyInjection.IMvcBuilder AddCacheTagHelperLimits(this Microsoft.Extensions.DependencyInjection.IMvcBuilder builder, System.Action<Microsoft.AspNetCore.Mvc.TagHelpers.CacheTagHelperOptions> configure) { throw null; }
         public static Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder AddCacheTagHelperLimits(this Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder builder, System.Action<Microsoft.AspNetCore.Mvc.TagHelpers.CacheTagHelperOptions> configure) { throw null; }
+        internal static void AddCacheTagHelperServices(Microsoft.Extensions.DependencyInjection.IServiceCollection services) { }
     }
 }

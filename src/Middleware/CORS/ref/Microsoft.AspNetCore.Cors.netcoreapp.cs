@@ -17,10 +17,24 @@ namespace Microsoft.AspNetCore.Builder
 }
 namespace Microsoft.AspNetCore.Cors
 {
+    internal static partial class CORSLoggerExtensions
+    {
+        public static void AccessControlMethodNotAllowed(this Microsoft.Extensions.Logging.ILogger logger, string accessControlMethod) { }
+        public static void FailedToSetCorsHeaders(this Microsoft.Extensions.Logging.ILogger logger, System.Exception exception) { }
+        public static void IsNotPreflightRequest(this Microsoft.Extensions.Logging.ILogger logger) { }
+        public static void IsPreflightRequest(this Microsoft.Extensions.Logging.ILogger logger) { }
+        public static void NoCorsPolicyFound(this Microsoft.Extensions.Logging.ILogger logger) { }
+        public static void OriginNotAllowed(this Microsoft.Extensions.Logging.ILogger logger, string origin) { }
+        public static void PolicyFailure(this Microsoft.Extensions.Logging.ILogger logger) { }
+        public static void PolicySuccess(this Microsoft.Extensions.Logging.ILogger logger) { }
+        public static void RequestDoesNotHaveOriginHeader(this Microsoft.Extensions.Logging.ILogger logger) { }
+        public static void RequestHasOriginHeader(this Microsoft.Extensions.Logging.ILogger logger, string origin) { }
+        public static void RequestHeaderNotAllowed(this Microsoft.Extensions.Logging.ILogger logger, string requestHeader) { }
+    }
     public partial class CorsPolicyMetadata : Microsoft.AspNetCore.Cors.Infrastructure.ICorsMetadata, Microsoft.AspNetCore.Cors.Infrastructure.ICorsPolicyMetadata
     {
         public CorsPolicyMetadata(Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy policy) { }
-        public Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy Policy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy Policy { get { throw null; } }
     }
     [System.AttributeUsageAttribute(System.AttributeTargets.Class | System.AttributeTargets.Method, AllowMultiple=false, Inherited=false)]
     public partial class DisableCorsAttribute : System.Attribute, Microsoft.AspNetCore.Cors.Infrastructure.ICorsMetadata, Microsoft.AspNetCore.Cors.Infrastructure.IDisableCorsAttribute
@@ -32,7 +46,15 @@ namespace Microsoft.AspNetCore.Cors
     {
         public EnableCorsAttribute() { }
         public EnableCorsAttribute(string policyName) { }
-        public string PolicyName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string PolicyName { get { throw null; } set { } }
+    }
+    internal static partial class Resources
+    {
+        internal static System.Globalization.CultureInfo Culture { get { throw null; } set { } }
+        internal static string InsecureConfiguration { get { throw null; } }
+        internal static string PreflightMaxAgeOutOfRange { get { throw null; } }
+        internal static System.Resources.ResourceManager ResourceManager { get { throw null; } }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]internal static string GetResourceString(string resourceKey, string defaultValue = null) { throw null; }
     }
 }
 namespace Microsoft.AspNetCore.Cors.Infrastructure
@@ -62,6 +84,7 @@ namespace Microsoft.AspNetCore.Cors.Infrastructure
     {
         public CorsOptions() { }
         public string DefaultPolicyName { get { throw null; } set { } }
+        internal System.Collections.Generic.IDictionary<string, (Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy policy, System.Threading.Tasks.Task<Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy> policyTask)> PolicyMap { get { throw null; } }
         public void AddDefaultPolicy(Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy policy) { }
         public void AddDefaultPolicy(System.Action<Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder> configurePolicy) { }
         public void AddPolicy(string name, Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy policy) { }
@@ -74,13 +97,13 @@ namespace Microsoft.AspNetCore.Cors.Infrastructure
         public bool AllowAnyHeader { get { throw null; } }
         public bool AllowAnyMethod { get { throw null; } }
         public bool AllowAnyOrigin { get { throw null; } }
-        public System.Collections.Generic.IList<string> ExposedHeaders { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<string> Headers { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Func<string, bool> IsOriginAllowed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IList<string> Methods { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<string> Origins { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IList<string> ExposedHeaders { get { throw null; } }
+        public System.Collections.Generic.IList<string> Headers { get { throw null; } }
+        public System.Func<string, bool> IsOriginAllowed { get { throw null; } set { } }
+        public System.Collections.Generic.IList<string> Methods { get { throw null; } }
+        public System.Collections.Generic.IList<string> Origins { get { throw null; } }
         public System.TimeSpan? PreflightMaxAge { get { throw null; } set { } }
-        public bool SupportsCredentials { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool SupportsCredentials { get { throw null; } set { } }
         public override string ToString() { throw null; }
     }
     public partial class CorsPolicyBuilder
@@ -93,6 +116,7 @@ namespace Microsoft.AspNetCore.Cors.Infrastructure
         public Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder AllowCredentials() { throw null; }
         public Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy Build() { throw null; }
         public Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder DisallowCredentials() { throw null; }
+        internal static string GetNormalizedOrigin(string origin) { throw null; }
         public Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder SetIsOriginAllowed(System.Func<string, bool> isOriginAllowed) { throw null; }
         public Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder SetIsOriginAllowedToAllowWildcardSubdomains() { throw null; }
         public Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder SetPreflightMaxAge(System.TimeSpan preflightMaxAge) { throw null; }
@@ -101,18 +125,22 @@ namespace Microsoft.AspNetCore.Cors.Infrastructure
         public Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder WithMethods(params string[] methods) { throw null; }
         public Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder WithOrigins(params string[] origins) { throw null; }
     }
+    internal static partial class CorsPolicyExtensions
+    {
+        public static bool IsOriginAnAllowedSubdomain(this Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy policy, string origin) { throw null; }
+    }
     public partial class CorsResult
     {
         public CorsResult() { }
-        public System.Collections.Generic.IList<string> AllowedExposedHeaders { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<string> AllowedHeaders { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<string> AllowedMethods { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string AllowedOrigin { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsOriginAllowed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsPreflightRequest { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.IList<string> AllowedExposedHeaders { get { throw null; } }
+        public System.Collections.Generic.IList<string> AllowedHeaders { get { throw null; } }
+        public System.Collections.Generic.IList<string> AllowedMethods { get { throw null; } }
+        public string AllowedOrigin { get { throw null; } set { } }
+        public bool IsOriginAllowed { get { throw null; } set { } }
+        public bool IsPreflightRequest { get { throw null; } set { } }
         public System.TimeSpan? PreflightMaxAge { get { throw null; } set { } }
-        public bool SupportsCredentials { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool VaryByOrigin { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool SupportsCredentials { get { throw null; } set { } }
+        public bool VaryByOrigin { get { throw null; } set { } }
         public override string ToString() { throw null; }
     }
     public partial class CorsService : Microsoft.AspNetCore.Cors.Infrastructure.ICorsService
@@ -148,6 +176,10 @@ namespace Microsoft.AspNetCore.Cors.Infrastructure
     public partial interface IEnableCorsAttribute : Microsoft.AspNetCore.Cors.Infrastructure.ICorsMetadata
     {
         string PolicyName { get; set; }
+    }
+    internal static partial class UriHelpers
+    {
+        public static bool IsSubdomainOf(System.Uri subdomain, System.Uri domain) { throw null; }
     }
 }
 namespace Microsoft.Extensions.DependencyInjection

@@ -31,10 +31,10 @@ namespace Microsoft.AspNetCore.HttpsPolicy
     public partial class HstsOptions
     {
         public HstsOptions() { }
-        public System.Collections.Generic.IList<string> ExcludedHosts { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool IncludeSubDomains { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.TimeSpan MaxAge { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool Preload { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.IList<string> ExcludedHosts { get { throw null; } }
+        public bool IncludeSubDomains { get { throw null; } set { } }
+        public System.TimeSpan MaxAge { get { throw null; } set { } }
+        public bool Preload { get { throw null; } set { } }
     }
     public partial class HttpsRedirectionMiddleware
     {
@@ -45,7 +45,7 @@ namespace Microsoft.AspNetCore.HttpsPolicy
     public partial class HttpsRedirectionOptions
     {
         public HttpsRedirectionOptions() { }
-        public int? HttpsPort { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int RedirectStatusCode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public int? HttpsPort { get { throw null; } set { } }
+        public int RedirectStatusCode { get { throw null; } set { } }
     }
 }

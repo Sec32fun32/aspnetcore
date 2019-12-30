@@ -14,11 +14,11 @@ namespace Microsoft.AspNetCore.Builder
     {
         public RequestLocalizationOptions() { }
         public Microsoft.AspNetCore.Localization.RequestCulture DefaultRequestCulture { get { throw null; } set { } }
-        public bool FallBackToParentCultures { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool FallBackToParentUICultures { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Localization.IRequestCultureProvider> RequestCultureProviders { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IList<System.Globalization.CultureInfo> SupportedCultures { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IList<System.Globalization.CultureInfo> SupportedUICultures { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool FallBackToParentCultures { get { throw null; } set { } }
+        public bool FallBackToParentUICultures { get { throw null; } set { } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Localization.IRequestCultureProvider> RequestCultureProviders { get { throw null; } set { } }
+        public System.Collections.Generic.IList<System.Globalization.CultureInfo> SupportedCultures { get { throw null; } set { } }
+        public System.Collections.Generic.IList<System.Globalization.CultureInfo> SupportedUICultures { get { throw null; } set { } }
         public Microsoft.AspNetCore.Builder.RequestLocalizationOptions AddSupportedCultures(params string[] cultures) { throw null; }
         public Microsoft.AspNetCore.Builder.RequestLocalizationOptions AddSupportedUICultures(params string[] uiCultures) { throw null; }
         public Microsoft.AspNetCore.Builder.RequestLocalizationOptions SetDefaultCulture(string defaultCulture) { throw null; }
@@ -33,14 +33,14 @@ namespace Microsoft.AspNetCore.Localization
     public partial class AcceptLanguageHeaderRequestCultureProvider : Microsoft.AspNetCore.Localization.RequestCultureProvider
     {
         public AcceptLanguageHeaderRequestCultureProvider() { }
-        public int MaximumAcceptLanguageHeaderValuesToTry { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public int MaximumAcceptLanguageHeaderValuesToTry { get { throw null; } set { } }
         public override System.Threading.Tasks.Task<Microsoft.AspNetCore.Localization.ProviderCultureResult> DetermineProviderCultureResult(Microsoft.AspNetCore.Http.HttpContext httpContext) { throw null; }
     }
     public partial class CookieRequestCultureProvider : Microsoft.AspNetCore.Localization.RequestCultureProvider
     {
         public static readonly string DefaultCookieName;
         public CookieRequestCultureProvider() { }
-        public string CookieName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string CookieName { get { throw null; } set { } }
         public override System.Threading.Tasks.Task<Microsoft.AspNetCore.Localization.ProviderCultureResult> DetermineProviderCultureResult(Microsoft.AspNetCore.Http.HttpContext httpContext) { throw null; }
         public static string MakeCookieValue(Microsoft.AspNetCore.Localization.RequestCulture requestCulture) { throw null; }
         public static Microsoft.AspNetCore.Localization.ProviderCultureResult ParseCookieValue(string value) { throw null; }
@@ -65,14 +65,14 @@ namespace Microsoft.AspNetCore.Localization
         public ProviderCultureResult(Microsoft.Extensions.Primitives.StringSegment culture, Microsoft.Extensions.Primitives.StringSegment uiCulture) { }
         public ProviderCultureResult(System.Collections.Generic.IList<Microsoft.Extensions.Primitives.StringSegment> cultures) { }
         public ProviderCultureResult(System.Collections.Generic.IList<Microsoft.Extensions.Primitives.StringSegment> cultures, System.Collections.Generic.IList<Microsoft.Extensions.Primitives.StringSegment> uiCultures) { }
-        public System.Collections.Generic.IList<Microsoft.Extensions.Primitives.StringSegment> Cultures { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<Microsoft.Extensions.Primitives.StringSegment> UICultures { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IList<Microsoft.Extensions.Primitives.StringSegment> Cultures { get { throw null; } }
+        public System.Collections.Generic.IList<Microsoft.Extensions.Primitives.StringSegment> UICultures { get { throw null; } }
     }
     public partial class QueryStringRequestCultureProvider : Microsoft.AspNetCore.Localization.RequestCultureProvider
     {
         public QueryStringRequestCultureProvider() { }
-        public string QueryStringKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string UIQueryStringKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string QueryStringKey { get { throw null; } set { } }
+        public string UIQueryStringKey { get { throw null; } set { } }
         public override System.Threading.Tasks.Task<Microsoft.AspNetCore.Localization.ProviderCultureResult> DetermineProviderCultureResult(Microsoft.AspNetCore.Http.HttpContext httpContext) { throw null; }
     }
     public partial class RequestCulture
@@ -81,20 +81,20 @@ namespace Microsoft.AspNetCore.Localization
         public RequestCulture(System.Globalization.CultureInfo culture, System.Globalization.CultureInfo uiCulture) { }
         public RequestCulture(string culture) { }
         public RequestCulture(string culture, string uiCulture) { }
-        public System.Globalization.CultureInfo Culture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Globalization.CultureInfo UICulture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Globalization.CultureInfo Culture { get { throw null; } }
+        public System.Globalization.CultureInfo UICulture { get { throw null; } }
     }
     public partial class RequestCultureFeature : Microsoft.AspNetCore.Localization.IRequestCultureFeature
     {
         public RequestCultureFeature(Microsoft.AspNetCore.Localization.RequestCulture requestCulture, Microsoft.AspNetCore.Localization.IRequestCultureProvider provider) { }
-        public Microsoft.AspNetCore.Localization.IRequestCultureProvider Provider { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Localization.RequestCulture RequestCulture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Localization.IRequestCultureProvider Provider { get { throw null; } }
+        public Microsoft.AspNetCore.Localization.RequestCulture RequestCulture { get { throw null; } }
     }
     public abstract partial class RequestCultureProvider : Microsoft.AspNetCore.Localization.IRequestCultureProvider
     {
         protected static readonly System.Threading.Tasks.Task<Microsoft.AspNetCore.Localization.ProviderCultureResult> NullProviderCultureResult;
         protected RequestCultureProvider() { }
-        public Microsoft.AspNetCore.Builder.RequestLocalizationOptions Options { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Builder.RequestLocalizationOptions Options { get { throw null; } set { } }
         public abstract System.Threading.Tasks.Task<Microsoft.AspNetCore.Localization.ProviderCultureResult> DetermineProviderCultureResult(Microsoft.AspNetCore.Http.HttpContext httpContext);
     }
     public partial class RequestLocalizationMiddleware

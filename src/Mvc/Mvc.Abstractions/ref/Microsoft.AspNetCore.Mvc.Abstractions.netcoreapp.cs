@@ -9,10 +9,10 @@ namespace Microsoft.AspNetCore.Mvc
         public ActionContext(Microsoft.AspNetCore.Http.HttpContext httpContext, Microsoft.AspNetCore.Routing.RouteData routeData, Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor actionDescriptor) { }
         public ActionContext(Microsoft.AspNetCore.Http.HttpContext httpContext, Microsoft.AspNetCore.Routing.RouteData routeData, Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor actionDescriptor, Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary modelState) { }
         public ActionContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext) { }
-        public Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor ActionDescriptor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Http.HttpContext HttpContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary ModelState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Routing.RouteData RouteData { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor ActionDescriptor { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Http.HttpContext HttpContext { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary ModelState { get { throw null; } }
+        public Microsoft.AspNetCore.Routing.RouteData RouteData { get { throw null; } set { } }
     }
     public partial interface IActionResult
     {
@@ -33,16 +33,16 @@ namespace Microsoft.AspNetCore.Mvc.Abstractions
     public partial class ActionDescriptor
     {
         public ActionDescriptor() { }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraintMetadata> ActionConstraints { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.Routing.AttributeRouteInfo AttributeRouteInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Abstractions.ParameterDescriptor> BoundProperties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public virtual string DisplayName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IList<object> EndpointMetadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.FilterDescriptor> FilterDescriptors { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Id { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Abstractions.ParameterDescriptor> Parameters { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IDictionary<object, object> Properties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IDictionary<string, string> RouteValues { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraintMetadata> ActionConstraints { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.Routing.AttributeRouteInfo AttributeRouteInfo { get { throw null; } set { } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Abstractions.ParameterDescriptor> BoundProperties { get { throw null; } set { } }
+        public virtual string DisplayName { get { throw null; } set { } }
+        public System.Collections.Generic.IList<object> EndpointMetadata { get { throw null; } set { } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.FilterDescriptor> FilterDescriptors { get { throw null; } set { } }
+        public string Id { get { throw null; } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Abstractions.ParameterDescriptor> Parameters { get { throw null; } set { } }
+        public System.Collections.Generic.IDictionary<object, object> Properties { get { throw null; } set { } }
+        public System.Collections.Generic.IDictionary<string, string> RouteValues { get { throw null; } set { } }
     }
     public static partial class ActionDescriptorExtensions
     {
@@ -52,13 +52,13 @@ namespace Microsoft.AspNetCore.Mvc.Abstractions
     public partial class ActionDescriptorProviderContext
     {
         public ActionDescriptorProviderContext() { }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor> Results { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor> Results { get { throw null; } }
     }
     public partial class ActionInvokerProviderContext
     {
         public ActionInvokerProviderContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext) { }
-        public Microsoft.AspNetCore.Mvc.ActionContext ActionContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Mvc.Abstractions.IActionInvoker Result { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.ActionContext ActionContext { get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.Abstractions.IActionInvoker Result { get { throw null; } set { } }
     }
     public partial interface IActionDescriptorProvider
     {
@@ -79,9 +79,40 @@ namespace Microsoft.AspNetCore.Mvc.Abstractions
     public partial class ParameterDescriptor
     {
         public ParameterDescriptor() { }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.BindingInfo BindingInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Type ParameterType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.BindingInfo BindingInfo { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
+        public System.Type ParameterType { get { throw null; } set { } }
+    }
+    internal static partial class Resources
+    {
+        internal static string ArgumentCannotBeNullOrEmpty { get { throw null; } }
+        internal static string BinderType_MustBeIModelBinder { get { throw null; } }
+        internal static string BindingSource_Body { get { throw null; } }
+        internal static string BindingSource_CannotBeComposite { get { throw null; } }
+        internal static string BindingSource_CannotBeGreedy { get { throw null; } }
+        internal static string BindingSource_Custom { get { throw null; } }
+        internal static string BindingSource_Form { get { throw null; } }
+        internal static string BindingSource_FormFile { get { throw null; } }
+        internal static string BindingSource_Header { get { throw null; } }
+        internal static string BindingSource_ModelBinding { get { throw null; } }
+        internal static string BindingSource_MustBeFromRequest { get { throw null; } }
+        internal static string BindingSource_MustBeGreedy { get { throw null; } }
+        internal static string BindingSource_Path { get { throw null; } }
+        internal static string BindingSource_Query { get { throw null; } }
+        internal static string BindingSource_Services { get { throw null; } }
+        internal static string BindingSource_Special { get { throw null; } }
+        internal static System.Globalization.CultureInfo Culture { get { throw null; } set { } }
+        internal static string ModelBindingContext_ModelMetadataMustBeSet { get { throw null; } }
+        internal static string ModelStateDictionary_MaxModelStateErrors { get { throw null; } }
+        internal static System.Resources.ResourceManager ResourceManager { get { throw null; } }
+        internal static string Validation_InvalidFieldCannotBeReset { get { throw null; } }
+        internal static string Validation_InvalidFieldCannotBeReset_ToSkipped { get { throw null; } }
+        internal static string FormatBinderType_MustBeIModelBinder(object p0, object p1) { throw null; }
+        internal static string FormatBindingSource_CannotBeComposite(object p0, object p1) { throw null; }
+        internal static string FormatBindingSource_CannotBeGreedy(object p0, object p1) { throw null; }
+        internal static string FormatBindingSource_MustBeFromRequest(object p0, object p1) { throw null; }
+        internal static string FormatBindingSource_MustBeGreedy(object p0, object p1) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]internal static string GetResourceString(string resourceKey, string defaultValue = null) { throw null; }
     }
 }
 namespace Microsoft.AspNetCore.Mvc.ActionConstraints
@@ -89,31 +120,32 @@ namespace Microsoft.AspNetCore.Mvc.ActionConstraints
     public partial class ActionConstraintContext
     {
         public ActionConstraintContext() { }
-        public System.Collections.Generic.IReadOnlyList<Microsoft.AspNetCore.Mvc.ActionConstraints.ActionSelectorCandidate> Candidates { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ActionConstraints.ActionSelectorCandidate CurrentCandidate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Routing.RouteContext RouteContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.IReadOnlyList<Microsoft.AspNetCore.Mvc.ActionConstraints.ActionSelectorCandidate> Candidates { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ActionConstraints.ActionSelectorCandidate CurrentCandidate { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Routing.RouteContext RouteContext { get { throw null; } set { } }
     }
     public partial class ActionConstraintItem
     {
         public ActionConstraintItem(Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraintMetadata metadata) { }
-        public Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint Constraint { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsReusable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraintMetadata Metadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint Constraint { get { throw null; } set { } }
+        public bool IsReusable { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraintMetadata Metadata { get { throw null; } }
     }
     public partial class ActionConstraintProviderContext
     {
         public ActionConstraintProviderContext(Microsoft.AspNetCore.Http.HttpContext context, Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor action, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ActionConstraints.ActionConstraintItem> items) { }
-        public Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor Action { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Http.HttpContext HttpContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ActionConstraints.ActionConstraintItem> Results { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor Action { get { throw null; } }
+        public Microsoft.AspNetCore.Http.HttpContext HttpContext { get { throw null; } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ActionConstraints.ActionConstraintItem> Results { get { throw null; } }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public readonly partial struct ActionSelectorCandidate
     {
         private readonly object _dummy;
+        private readonly int _dummyPrimitive;
         public ActionSelectorCandidate(Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor action, System.Collections.Generic.IReadOnlyList<Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint> constraints) { throw null; }
-        public Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor Action { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IReadOnlyList<Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint> Constraints { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor Action { get { throw null; } }
+        public System.Collections.Generic.IReadOnlyList<Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint> Constraints { get { throw null; } }
     }
     public partial interface IActionConstraint : Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraintMetadata
     {
@@ -141,60 +173,60 @@ namespace Microsoft.AspNetCore.Mvc.ApiExplorer
     public partial class ApiDescription
     {
         public ApiDescription() { }
-        public Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor ActionDescriptor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string GroupName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string HttpMethod { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ApiExplorer.ApiParameterDescription> ParameterDescriptions { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IDictionary<object, object> Properties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string RelativePath { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ApiExplorer.ApiRequestFormat> SupportedRequestFormats { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ApiExplorer.ApiResponseType> SupportedResponseTypes { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor ActionDescriptor { get { throw null; } set { } }
+        public string GroupName { get { throw null; } set { } }
+        public string HttpMethod { get { throw null; } set { } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ApiExplorer.ApiParameterDescription> ParameterDescriptions { get { throw null; } }
+        public System.Collections.Generic.IDictionary<object, object> Properties { get { throw null; } }
+        public string RelativePath { get { throw null; } set { } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ApiExplorer.ApiRequestFormat> SupportedRequestFormats { get { throw null; } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ApiExplorer.ApiResponseType> SupportedResponseTypes { get { throw null; } }
     }
     public partial class ApiDescriptionProviderContext
     {
         public ApiDescriptionProviderContext(System.Collections.Generic.IReadOnlyList<Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor> actions) { }
-        public System.Collections.Generic.IReadOnlyList<Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor> Actions { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescription> Results { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IReadOnlyList<Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor> Actions { get { throw null; } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescription> Results { get { throw null; } }
     }
     public partial class ApiParameterDescription
     {
         public ApiParameterDescription() { }
-        public object DefaultValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsRequired { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata ModelMetadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.Abstractions.ParameterDescriptor ParameterDescriptor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ApiExplorer.ApiParameterRouteInfo RouteInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource Source { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public object DefaultValue { get { throw null; } set { } }
+        public bool IsRequired { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata ModelMetadata { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.Abstractions.ParameterDescriptor ParameterDescriptor { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ApiExplorer.ApiParameterRouteInfo RouteInfo { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource Source { get { throw null; } set { } }
+        public System.Type Type { get { throw null; } set { } }
     }
     public partial class ApiParameterRouteInfo
     {
         public ApiParameterRouteInfo() { }
-        public System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Routing.IRouteConstraint> Constraints { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public object DefaultValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsOptional { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Routing.IRouteConstraint> Constraints { get { throw null; } set { } }
+        public object DefaultValue { get { throw null; } set { } }
+        public bool IsOptional { get { throw null; } set { } }
     }
     public partial class ApiRequestFormat
     {
         public ApiRequestFormat() { }
-        public Microsoft.AspNetCore.Mvc.Formatters.IInputFormatter Formatter { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string MediaType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Formatters.IInputFormatter Formatter { get { throw null; } set { } }
+        public string MediaType { get { throw null; } set { } }
     }
     public partial class ApiResponseFormat
     {
         public ApiResponseFormat() { }
-        public Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter Formatter { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string MediaType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter Formatter { get { throw null; } set { } }
+        public string MediaType { get { throw null; } set { } }
     }
     public partial class ApiResponseType
     {
         public ApiResponseType() { }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ApiExplorer.ApiResponseFormat> ApiResponseFormats { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsDefaultResponse { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata ModelMetadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int StatusCode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ApiExplorer.ApiResponseFormat> ApiResponseFormats { get { throw null; } set { } }
+        public bool IsDefaultResponse { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata ModelMetadata { get { throw null; } set { } }
+        public int StatusCode { get { throw null; } set { } }
+        public System.Type Type { get { throw null; } set { } }
     }
     public partial interface IApiDescriptionProvider
     {
@@ -214,38 +246,38 @@ namespace Microsoft.AspNetCore.Mvc.Filters
     public partial class ActionExecutedContext : Microsoft.AspNetCore.Mvc.Filters.FilterContext
     {
         public ActionExecutedContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> filters, object controller) : base (default(Microsoft.AspNetCore.Mvc.ActionContext), default(System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>)) { }
-        public virtual bool Canceled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public virtual object Controller { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public virtual bool Canceled { get { throw null; } set { } }
+        public virtual object Controller { get { throw null; } }
         public virtual System.Exception Exception { get { throw null; } set { } }
         public virtual System.Runtime.ExceptionServices.ExceptionDispatchInfo ExceptionDispatchInfo { get { throw null; } set { } }
-        public virtual bool ExceptionHandled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public virtual bool ExceptionHandled { get { throw null; } set { } }
+        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { get { throw null; } set { } }
     }
     public partial class ActionExecutingContext : Microsoft.AspNetCore.Mvc.Filters.FilterContext
     {
         public ActionExecutingContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> filters, System.Collections.Generic.IDictionary<string, object> actionArguments, object controller) : base (default(Microsoft.AspNetCore.Mvc.ActionContext), default(System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>)) { }
-        public virtual System.Collections.Generic.IDictionary<string, object> ActionArguments { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual object Controller { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public virtual System.Collections.Generic.IDictionary<string, object> ActionArguments { get { throw null; } }
+        public virtual object Controller { get { throw null; } }
+        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { get { throw null; } set { } }
     }
     public delegate System.Threading.Tasks.Task<Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext> ActionExecutionDelegate();
     public partial class AuthorizationFilterContext : Microsoft.AspNetCore.Mvc.Filters.FilterContext
     {
         public AuthorizationFilterContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> filters) : base (default(Microsoft.AspNetCore.Mvc.ActionContext), default(System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>)) { }
-        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { get { throw null; } set { } }
     }
     public partial class ExceptionContext : Microsoft.AspNetCore.Mvc.Filters.FilterContext
     {
         public ExceptionContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> filters) : base (default(Microsoft.AspNetCore.Mvc.ActionContext), default(System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>)) { }
         public virtual System.Exception Exception { get { throw null; } set { } }
         public virtual System.Runtime.ExceptionServices.ExceptionDispatchInfo ExceptionDispatchInfo { get { throw null; } set { } }
-        public virtual bool ExceptionHandled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public virtual bool ExceptionHandled { get { throw null; } set { } }
+        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { get { throw null; } set { } }
     }
     public abstract partial class FilterContext : Microsoft.AspNetCore.Mvc.ActionContext
     {
         public FilterContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> filters) { }
-        public virtual System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> Filters { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public virtual System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> Filters { get { throw null; } }
         public TMetadata FindEffectivePolicy<TMetadata>() where TMetadata : Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata { throw null; }
         public bool IsEffectivePolicy<TMetadata>(TMetadata policy) where TMetadata : Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata { throw null; }
     }
@@ -253,24 +285,24 @@ namespace Microsoft.AspNetCore.Mvc.Filters
     public partial class FilterDescriptor
     {
         public FilterDescriptor(Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata filter, int filterScope) { }
-        public Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata Filter { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int Order { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int Scope { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata Filter { get { throw null; } }
+        public int Order { get { throw null; } set { } }
+        public int Scope { get { throw null; } }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("FilterItem: {Filter}")]
     public partial class FilterItem
     {
         public FilterItem(Microsoft.AspNetCore.Mvc.Filters.FilterDescriptor descriptor) { }
         public FilterItem(Microsoft.AspNetCore.Mvc.Filters.FilterDescriptor descriptor, Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata filter) { }
-        public Microsoft.AspNetCore.Mvc.Filters.FilterDescriptor Descriptor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata Filter { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsReusable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.Filters.FilterDescriptor Descriptor { get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata Filter { get { throw null; } set { } }
+        public bool IsReusable { get { throw null; } set { } }
     }
     public partial class FilterProviderContext
     {
         public FilterProviderContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.FilterItem> items) { }
-        public Microsoft.AspNetCore.Mvc.ActionContext ActionContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.FilterItem> Results { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.ActionContext ActionContext { get { throw null; } set { } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.FilterItem> Results { get { throw null; } set { } }
     }
     public partial interface IActionFilter : Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata
     {
@@ -346,35 +378,35 @@ namespace Microsoft.AspNetCore.Mvc.Filters
     public partial class ResourceExecutedContext : Microsoft.AspNetCore.Mvc.Filters.FilterContext
     {
         public ResourceExecutedContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> filters) : base (default(Microsoft.AspNetCore.Mvc.ActionContext), default(System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>)) { }
-        public virtual bool Canceled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public virtual bool Canceled { get { throw null; } set { } }
         public virtual System.Exception Exception { get { throw null; } set { } }
         public virtual System.Runtime.ExceptionServices.ExceptionDispatchInfo ExceptionDispatchInfo { get { throw null; } set { } }
-        public virtual bool ExceptionHandled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public virtual bool ExceptionHandled { get { throw null; } set { } }
+        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { get { throw null; } set { } }
     }
     public partial class ResourceExecutingContext : Microsoft.AspNetCore.Mvc.Filters.FilterContext
     {
         public ResourceExecutingContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> filters, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ModelBinding.IValueProviderFactory> valueProviderFactories) : base (default(Microsoft.AspNetCore.Mvc.ActionContext), default(System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>)) { }
-        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ModelBinding.IValueProviderFactory> ValueProviderFactories { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { get { throw null; } set { } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ModelBinding.IValueProviderFactory> ValueProviderFactories { get { throw null; } }
     }
     public delegate System.Threading.Tasks.Task<Microsoft.AspNetCore.Mvc.Filters.ResourceExecutedContext> ResourceExecutionDelegate();
     public partial class ResultExecutedContext : Microsoft.AspNetCore.Mvc.Filters.FilterContext
     {
         public ResultExecutedContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> filters, Microsoft.AspNetCore.Mvc.IActionResult result, object controller) : base (default(Microsoft.AspNetCore.Mvc.ActionContext), default(System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>)) { }
-        public virtual bool Canceled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public virtual object Controller { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public virtual bool Canceled { get { throw null; } set { } }
+        public virtual object Controller { get { throw null; } }
         public virtual System.Exception Exception { get { throw null; } set { } }
         public virtual System.Runtime.ExceptionServices.ExceptionDispatchInfo ExceptionDispatchInfo { get { throw null; } set { } }
-        public virtual bool ExceptionHandled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public virtual bool ExceptionHandled { get { throw null; } set { } }
+        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { get { throw null; } }
     }
     public partial class ResultExecutingContext : Microsoft.AspNetCore.Mvc.Filters.FilterContext
     {
         public ResultExecutingContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> filters, Microsoft.AspNetCore.Mvc.IActionResult result, object controller) : base (default(Microsoft.AspNetCore.Mvc.ActionContext), default(System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>)) { }
-        public virtual bool Cancel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public virtual object Controller { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public virtual bool Cancel { get { throw null; } set { } }
+        public virtual object Controller { get { throw null; } }
+        public virtual Microsoft.AspNetCore.Mvc.IActionResult Result { get { throw null; } set { } }
     }
     public delegate System.Threading.Tasks.Task<Microsoft.AspNetCore.Mvc.Filters.ResultExecutedContext> ResultExecutionDelegate();
 }
@@ -400,13 +432,13 @@ namespace Microsoft.AspNetCore.Mvc.Formatters
     {
         public InputFormatterContext(Microsoft.AspNetCore.Http.HttpContext httpContext, string modelName, Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary modelState, Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata metadata, System.Func<System.IO.Stream, System.Text.Encoding, System.IO.TextReader> readerFactory) { }
         public InputFormatterContext(Microsoft.AspNetCore.Http.HttpContext httpContext, string modelName, Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary modelState, Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata metadata, System.Func<System.IO.Stream, System.Text.Encoding, System.IO.TextReader> readerFactory, bool treatEmptyInputAsDefaultValue) { }
-        public Microsoft.AspNetCore.Http.HttpContext HttpContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata Metadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ModelName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary ModelState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Type ModelType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Func<System.IO.Stream, System.Text.Encoding, System.IO.TextReader> ReaderFactory { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool TreatEmptyInputAsDefaultValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Http.HttpContext HttpContext { get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata Metadata { get { throw null; } }
+        public string ModelName { get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary ModelState { get { throw null; } }
+        public System.Type ModelType { get { throw null; } }
+        public System.Func<System.IO.Stream, System.Text.Encoding, System.IO.TextReader> ReaderFactory { get { throw null; } }
+        public bool TreatEmptyInputAsDefaultValue { get { throw null; } }
     }
     public partial class InputFormatterException : System.Exception
     {
@@ -421,10 +453,10 @@ namespace Microsoft.AspNetCore.Mvc.Formatters
     }
     public partial class InputFormatterResult
     {
-        internal InputFormatterResult() { }
-        public bool HasError { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool IsModelSet { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public object Model { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        private InputFormatterResult() { }
+        public bool HasError { get { throw null; } }
+        public bool IsModelSet { get { throw null; } }
+        public object Model { get { throw null; } }
         public static Microsoft.AspNetCore.Mvc.Formatters.InputFormatterResult Failure() { throw null; }
         public static System.Threading.Tasks.Task<Microsoft.AspNetCore.Mvc.Formatters.InputFormatterResult> FailureAsync() { throw null; }
         public static Microsoft.AspNetCore.Mvc.Formatters.InputFormatterResult NoValue() { throw null; }
@@ -440,16 +472,16 @@ namespace Microsoft.AspNetCore.Mvc.Formatters
     public abstract partial class OutputFormatterCanWriteContext
     {
         protected OutputFormatterCanWriteContext(Microsoft.AspNetCore.Http.HttpContext httpContext) { }
-        public virtual Microsoft.Extensions.Primitives.StringSegment ContentType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public virtual bool ContentTypeIsServerDefined { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public virtual Microsoft.AspNetCore.Http.HttpContext HttpContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
-        public virtual object Object { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
-        public virtual System.Type ObjectType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
+        public virtual Microsoft.Extensions.Primitives.StringSegment ContentType { get { throw null; } set { } }
+        public virtual bool ContentTypeIsServerDefined { get { throw null; } set { } }
+        public virtual Microsoft.AspNetCore.Http.HttpContext HttpContext { get { throw null; } protected set { } }
+        public virtual object Object { get { throw null; } protected set { } }
+        public virtual System.Type ObjectType { get { throw null; } protected set { } }
     }
     public partial class OutputFormatterWriteContext : Microsoft.AspNetCore.Mvc.Formatters.OutputFormatterCanWriteContext
     {
         public OutputFormatterWriteContext(Microsoft.AspNetCore.Http.HttpContext httpContext, System.Func<System.IO.Stream, System.Text.Encoding, System.IO.TextWriter> writerFactory, System.Type objectType, object @object) : base (default(Microsoft.AspNetCore.Http.HttpContext)) { }
-        public virtual System.Func<System.IO.Stream, System.Text.Encoding, System.IO.TextWriter> WriterFactory { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
+        public virtual System.Func<System.IO.Stream, System.Text.Encoding, System.IO.TextWriter> WriterFactory { get { throw null; } protected set { } }
     }
 }
 namespace Microsoft.AspNetCore.Mvc.ModelBinding
@@ -458,11 +490,11 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
     {
         public BindingInfo() { }
         public BindingInfo(Microsoft.AspNetCore.Mvc.ModelBinding.BindingInfo other) { }
-        public string BinderModelName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string BinderModelName { get { throw null; } set { } }
         public System.Type BinderType { get { throw null; } set { } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource BindingSource { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.IPropertyFilterProvider PropertyFilterProvider { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Func<Microsoft.AspNetCore.Mvc.ActionContext, bool> RequestPredicate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource BindingSource { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.IPropertyFilterProvider PropertyFilterProvider { get { throw null; } set { } }
+        public System.Func<Microsoft.AspNetCore.Mvc.ActionContext, bool> RequestPredicate { get { throw null; } set { } }
         public static Microsoft.AspNetCore.Mvc.ModelBinding.BindingInfo GetBindingInfo(System.Collections.Generic.IEnumerable<object> attributes) { throw null; }
         public static Microsoft.AspNetCore.Mvc.ModelBinding.BindingInfo GetBindingInfo(System.Collections.Generic.IEnumerable<object> attributes, Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata modelMetadata) { throw null; }
         public bool TryApplyBindingInfo(Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata modelMetadata) { throw null; }
@@ -481,10 +513,10 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public static readonly Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource Services;
         public static readonly Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource Special;
         public BindingSource(string id, string displayName, bool isGreedy, bool isFromRequest) { }
-        public string DisplayName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Id { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool IsFromRequest { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool IsGreedy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string DisplayName { get { throw null; } }
+        public string Id { get { throw null; } }
+        public bool IsFromRequest { get { throw null; } }
+        public bool IsGreedy { get { throw null; } }
         public virtual bool CanAcceptDataFrom(Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource bindingSource) { throw null; }
         public bool Equals(Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource other) { throw null; }
         public override bool Equals(object obj) { throw null; }
@@ -494,8 +526,8 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
     }
     public partial class CompositeBindingSource : Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource
     {
-        internal CompositeBindingSource() : base (default(string), default(string), default(bool), default(bool)) { }
-        public System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource> BindingSources { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        private CompositeBindingSource() : base (default(string), default(string), default(bool), default(bool)) { }
+        public System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource> BindingSources { get { throw null; } }
         public override bool CanAcceptDataFrom(Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource bindingSource) { throw null; }
         public static Microsoft.AspNetCore.Mvc.ModelBinding.CompositeBindingSource Create(System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource> bindingSources, string displayName) { throw null; }
     }
@@ -503,9 +535,10 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
     public readonly partial struct EnumGroupAndName
     {
         private readonly object _dummy;
+        private readonly int _dummyPrimitive;
         public EnumGroupAndName(string group, System.Func<string> name) { throw null; }
         public EnumGroupAndName(string group, string name) { throw null; }
-        public string Group { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Group { get { throw null; } }
         public string Name { get { throw null; } }
     }
     public partial interface IBinderTypeProviderMetadata : Microsoft.AspNetCore.Mvc.ModelBinding.IBindingSourceMetadata
@@ -556,7 +589,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public abstract Microsoft.AspNetCore.Mvc.ModelBinding.BindingInfo BindingInfo { get; }
         public abstract Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata Metadata { get; }
         public abstract Microsoft.AspNetCore.Mvc.ModelBinding.IModelMetadataProvider MetadataProvider { get; }
-        public virtual System.IServiceProvider Services { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public virtual System.IServiceProvider Services { get { throw null; } }
         public abstract Microsoft.AspNetCore.Mvc.ModelBinding.IModelBinder CreateBinder(Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata metadata);
         public virtual Microsoft.AspNetCore.Mvc.ModelBinding.IModelBinder CreateBinder(Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata metadata, Microsoft.AspNetCore.Mvc.ModelBinding.BindingInfo bindingInfo) { throw null; }
     }
@@ -574,7 +607,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public abstract string ModelName { get; set; }
         public abstract Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary ModelState { get; set; }
         public virtual System.Type ModelType { get { throw null; } }
-        public string OriginalModelName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
+        public string OriginalModelName { get { throw null; } protected set { } }
         public abstract System.Func<Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata, bool> PropertyFilter { get; set; }
         public abstract Microsoft.AspNetCore.Mvc.ModelBinding.ModelBindingResult Result { get; set; }
         public abstract Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationStateDictionary ValidationState { get; set; }
@@ -586,6 +619,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public readonly partial struct NestedScope : System.IDisposable
         {
             private readonly object _dummy;
+            private readonly int _dummyPrimitive;
             public NestedScope(Microsoft.AspNetCore.Mvc.ModelBinding.ModelBindingContext context) { throw null; }
             public void Dispose() { }
         }
@@ -595,8 +629,8 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
     {
         private readonly object _dummy;
         private readonly int _dummyPrimitive;
-        public bool IsModelSet { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public object Model { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsModelSet { get { throw null; } }
+        public object Model { get { throw null; } }
         public bool Equals(Microsoft.AspNetCore.Mvc.ModelBinding.ModelBindingResult other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public static Microsoft.AspNetCore.Mvc.ModelBinding.ModelBindingResult Failed() { throw null; }
@@ -611,8 +645,8 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public ModelError(System.Exception exception) { }
         public ModelError(System.Exception exception, string errorMessage) { }
         public ModelError(string errorMessage) { }
-        public string ErrorMessage { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Exception Exception { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ErrorMessage { get { throw null; } }
+        public System.Exception Exception { get { throw null; } }
     }
     public partial class ModelErrorCollection : System.Collections.ObjectModel.Collection<Microsoft.AspNetCore.Mvc.ModelBinding.ModelError>
     {
@@ -638,24 +672,24 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public abstract string DisplayName { get; }
         public abstract string EditFormatString { get; }
         public abstract Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata ElementMetadata { get; }
-        public System.Type ElementType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Type ElementType { get { throw null; } }
         public abstract System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<Microsoft.AspNetCore.Mvc.ModelBinding.EnumGroupAndName, string>> EnumGroupedDisplayNamesAndValues { get; }
         public abstract System.Collections.Generic.IReadOnlyDictionary<string, string> EnumNamesAndValues { get; }
         public abstract bool HasNonDefaultEditFormat { get; }
-        public virtual bool? HasValidators { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public virtual bool? HasValidators { get { throw null; } }
         public abstract bool HideSurroundingHtml { get; }
         public abstract bool HtmlEncode { get; }
-        protected Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ModelMetadataIdentity Identity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        protected Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ModelMetadataIdentity Identity { get { throw null; } }
         public abstract bool IsBindingAllowed { get; }
         public abstract bool IsBindingRequired { get; }
-        public bool IsCollectionType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool IsComplexType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsCollectionType { get { throw null; } }
+        public bool IsComplexType { get { throw null; } }
         public abstract bool IsEnum { get; }
-        public bool IsEnumerableType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsEnumerableType { get { throw null; } }
         public abstract bool IsFlagsEnum { get; }
-        public bool IsNullableValueType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsNullableValueType { get { throw null; } }
         public abstract bool IsReadOnly { get; }
-        public bool IsReferenceOrNullableType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsReferenceOrNullableType { get { throw null; } }
         public abstract bool IsRequired { get; }
         public Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ModelMetadataKind MetadataKind { get { throw null; } }
         public abstract Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ModelBindingMessageProvider ModelBindingMessageProvider { get; }
@@ -675,7 +709,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public abstract bool ShowForEdit { get; }
         public abstract string SimpleDisplayProperty { get; }
         public abstract string TemplateHint { get; }
-        public System.Type UnderlyingOrModelType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Type UnderlyingOrModelType { get { throw null; } }
         public abstract bool ValidateChildren { get; }
         public abstract System.Collections.Generic.IReadOnlyList<object> ValidatorMetadata { get; }
         public bool Equals(Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata other) { throw null; }
@@ -705,8 +739,8 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public ModelStateDictionary() { }
         public ModelStateDictionary(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary dictionary) { }
         public ModelStateDictionary(int maxAllowedErrors) { }
-        public int Count { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int ErrorCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public int Count { get { throw null; } }
+        public int ErrorCount { get { throw null; } }
         public bool HasReachedMaxErrors { get { throw null; } }
         public bool IsValid { get { throw null; } }
         public Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry this[string key] { get { throw null; } }
@@ -755,6 +789,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public readonly partial struct KeyEnumerable : System.Collections.Generic.IEnumerable<string>, System.Collections.IEnumerable
         {
             private readonly object _dummy;
+            private readonly int _dummyPrimitive;
             public KeyEnumerable(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary dictionary) { throw null; }
             public Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.KeyEnumerator GetEnumerator() { throw null; }
             System.Collections.Generic.IEnumerator<string> System.Collections.Generic.IEnumerable<System.String>.GetEnumerator() { throw null; }
@@ -764,8 +799,9 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public partial struct KeyEnumerator : System.Collections.Generic.IEnumerator<string>, System.Collections.IEnumerator, System.IDisposable
         {
             private object _dummy;
+            private int _dummyPrimitive;
             public KeyEnumerator(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary dictionary, string prefix) { throw null; }
-            public string Current { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            public string Current { get { throw null; } }
             object System.Collections.IEnumerator.Current { get { throw null; } }
             public void Dispose() { }
             public bool MoveNext() { throw null; }
@@ -775,6 +811,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public readonly partial struct PrefixEnumerable : System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry>>, System.Collections.IEnumerable
         {
             private readonly object _dummy;
+            private readonly int _dummyPrimitive;
             public PrefixEnumerable(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary dictionary, string prefix) { throw null; }
             public Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.Enumerator GetEnumerator() { throw null; }
             System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry>> System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String,Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry>>.GetEnumerator() { throw null; }
@@ -784,6 +821,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public readonly partial struct ValueEnumerable : System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry>, System.Collections.IEnumerable
         {
             private readonly object _dummy;
+            private readonly int _dummyPrimitive;
             public ValueEnumerable(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary dictionary) { throw null; }
             public Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.ValueEnumerator GetEnumerator() { throw null; }
             System.Collections.Generic.IEnumerator<Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry> System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry>.GetEnumerator() { throw null; }
@@ -793,8 +831,9 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public partial struct ValueEnumerator : System.Collections.Generic.IEnumerator<Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry>, System.Collections.IEnumerator, System.IDisposable
         {
             private object _dummy;
+            private int _dummyPrimitive;
             public ValueEnumerator(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary dictionary, string prefix) { throw null; }
-            public Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry Current { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            public Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry Current { get { throw null; } }
             object System.Collections.IEnumerator.Current { get { throw null; } }
             public void Dispose() { }
             public bool MoveNext() { throw null; }
@@ -804,12 +843,12 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
     public abstract partial class ModelStateEntry
     {
         protected ModelStateEntry() { }
-        public string AttemptedValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string AttemptedValue { get { throw null; } set { } }
         public abstract System.Collections.Generic.IReadOnlyList<Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry> Children { get; }
         public Microsoft.AspNetCore.Mvc.ModelBinding.ModelErrorCollection Errors { get { throw null; } }
         public abstract bool IsContainerNode { get; }
-        public object RawValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState ValidationState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public object RawValue { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState ValidationState { get { throw null; } set { } }
         public abstract Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry GetModelStateForProperty(string propertyName);
     }
     public enum ModelValidationState
@@ -831,20 +870,21 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
     public partial class ValueProviderFactoryContext
     {
         public ValueProviderFactoryContext(Microsoft.AspNetCore.Mvc.ActionContext context) { }
-        public Microsoft.AspNetCore.Mvc.ActionContext ActionContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ModelBinding.IValueProvider> ValueProviders { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.ActionContext ActionContext { get { throw null; } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ModelBinding.IValueProvider> ValueProviders { get { throw null; } }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public readonly partial struct ValueProviderResult : System.Collections.Generic.IEnumerable<string>, System.Collections.IEnumerable, System.IEquatable<Microsoft.AspNetCore.Mvc.ModelBinding.ValueProviderResult>
     {
         private readonly object _dummy;
+        private readonly int _dummyPrimitive;
         public static Microsoft.AspNetCore.Mvc.ModelBinding.ValueProviderResult None;
         public ValueProviderResult(Microsoft.Extensions.Primitives.StringValues values) { throw null; }
         public ValueProviderResult(Microsoft.Extensions.Primitives.StringValues values, System.Globalization.CultureInfo culture) { throw null; }
-        public System.Globalization.CultureInfo Culture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Globalization.CultureInfo Culture { get { throw null; } }
         public string FirstValue { get { throw null; } }
         public int Length { get { throw null; } }
-        public Microsoft.Extensions.Primitives.StringValues Values { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.Extensions.Primitives.StringValues Values { get { throw null; } }
         public bool Equals(Microsoft.AspNetCore.Mvc.ModelBinding.ValueProviderResult other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public System.Collections.Generic.IEnumerator<string> GetEnumerator() { throw null; }
@@ -862,26 +902,27 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding.Metadata
     public abstract partial class ModelBindingMessageProvider
     {
         protected ModelBindingMessageProvider() { }
-        public virtual System.Func<string, string, string> AttemptedValueIsInvalidAccessor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual System.Func<string, string> MissingBindRequiredValueAccessor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual System.Func<string> MissingKeyOrValueAccessor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual System.Func<string> MissingRequestBodyRequiredValueAccessor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual System.Func<string, string> NonPropertyAttemptedValueIsInvalidAccessor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual System.Func<string> NonPropertyUnknownValueIsInvalidAccessor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual System.Func<string> NonPropertyValueMustBeANumberAccessor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual System.Func<string, string> UnknownValueIsInvalidAccessor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual System.Func<string, string> ValueIsInvalidAccessor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual System.Func<string, string> ValueMustBeANumberAccessor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual System.Func<string, string> ValueMustNotBeNullAccessor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public virtual System.Func<string, string, string> AttemptedValueIsInvalidAccessor { get { throw null; } }
+        public virtual System.Func<string, string> MissingBindRequiredValueAccessor { get { throw null; } }
+        public virtual System.Func<string> MissingKeyOrValueAccessor { get { throw null; } }
+        public virtual System.Func<string> MissingRequestBodyRequiredValueAccessor { get { throw null; } }
+        public virtual System.Func<string, string> NonPropertyAttemptedValueIsInvalidAccessor { get { throw null; } }
+        public virtual System.Func<string> NonPropertyUnknownValueIsInvalidAccessor { get { throw null; } }
+        public virtual System.Func<string> NonPropertyValueMustBeANumberAccessor { get { throw null; } }
+        public virtual System.Func<string, string> UnknownValueIsInvalidAccessor { get { throw null; } }
+        public virtual System.Func<string, string> ValueIsInvalidAccessor { get { throw null; } }
+        public virtual System.Func<string, string> ValueMustBeANumberAccessor { get { throw null; } }
+        public virtual System.Func<string, string> ValueMustNotBeNullAccessor { get { throw null; } }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public readonly partial struct ModelMetadataIdentity : System.IEquatable<Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ModelMetadataIdentity>
     {
         private readonly object _dummy;
-        public System.Type ContainerType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        private readonly int _dummyPrimitive;
+        public System.Type ContainerType { get { throw null; } }
         public Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ModelMetadataKind MetadataKind { get { throw null; } }
-        public System.Type ModelType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Type ModelType { get { throw null; } }
+        public string Name { get { throw null; } }
         public System.Reflection.ParameterInfo ParameterInfo { get { throw null; } }
         public System.Reflection.PropertyInfo PropertyInfo { get { throw null; } }
         public bool Equals(Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ModelMetadataIdentity other) { throw null; }
@@ -906,21 +947,21 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding.Validation
     public partial class ClientModelValidationContext : Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ModelValidationContextBase
     {
         public ClientModelValidationContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext, Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata metadata, Microsoft.AspNetCore.Mvc.ModelBinding.IModelMetadataProvider metadataProvider, System.Collections.Generic.IDictionary<string, string> attributes) : base (default(Microsoft.AspNetCore.Mvc.ActionContext), default(Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata), default(Microsoft.AspNetCore.Mvc.ModelBinding.IModelMetadataProvider)) { }
-        public System.Collections.Generic.IDictionary<string, string> Attributes { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, string> Attributes { get { throw null; } }
     }
     public partial class ClientValidatorItem
     {
         public ClientValidatorItem() { }
         public ClientValidatorItem(object validatorMetadata) { }
-        public bool IsReusable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.Validation.IClientModelValidator Validator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public object ValidatorMetadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsReusable { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.Validation.IClientModelValidator Validator { get { throw null; } set { } }
+        public object ValidatorMetadata { get { throw null; } }
     }
     public partial class ClientValidatorProviderContext
     {
         public ClientValidatorProviderContext(Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata modelMetadata, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ClientValidatorItem> items) { }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata ModelMetadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ClientValidatorItem> Results { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata ModelMetadata { get { throw null; } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ClientValidatorItem> Results { get { throw null; } }
         public System.Collections.Generic.IReadOnlyList<object> ValidatorMetadata { get { throw null; } }
     }
     public partial interface IClientModelValidator
@@ -950,37 +991,38 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding.Validation
     public partial class ModelValidationContext : Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ModelValidationContextBase
     {
         public ModelValidationContext(Microsoft.AspNetCore.Mvc.ActionContext actionContext, Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata modelMetadata, Microsoft.AspNetCore.Mvc.ModelBinding.IModelMetadataProvider metadataProvider, object container, object model) : base (default(Microsoft.AspNetCore.Mvc.ActionContext), default(Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata), default(Microsoft.AspNetCore.Mvc.ModelBinding.IModelMetadataProvider)) { }
-        public object Container { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public object Model { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public object Container { get { throw null; } }
+        public object Model { get { throw null; } }
     }
     public partial class ModelValidationContextBase
     {
         public ModelValidationContextBase(Microsoft.AspNetCore.Mvc.ActionContext actionContext, Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata modelMetadata, Microsoft.AspNetCore.Mvc.ModelBinding.IModelMetadataProvider metadataProvider) { }
-        public Microsoft.AspNetCore.Mvc.ActionContext ActionContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.IModelMetadataProvider MetadataProvider { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata ModelMetadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.ActionContext ActionContext { get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.IModelMetadataProvider MetadataProvider { get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata ModelMetadata { get { throw null; } }
     }
     public partial class ModelValidationResult
     {
         public ModelValidationResult(string memberName, string message) { }
-        public string MemberName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Message { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string MemberName { get { throw null; } }
+        public string Message { get { throw null; } }
     }
     public partial class ModelValidatorProviderContext
     {
         public ModelValidatorProviderContext(Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata modelMetadata, System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidatorItem> items) { }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata ModelMetadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidatorItem> Results { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata ModelMetadata { get { throw null; } set { } }
+        public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidatorItem> Results { get { throw null; } }
         public System.Collections.Generic.IReadOnlyList<object> ValidatorMetadata { get { throw null; } }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct ValidationEntry
     {
         private object _dummy;
+        private int _dummyPrimitive;
         public ValidationEntry(Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata metadata, string key, System.Func<object> modelAccessor) { throw null; }
         public ValidationEntry(Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata metadata, string key, object model) { throw null; }
-        public string Key { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata Metadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Key { get { throw null; } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata Metadata { get { throw null; } }
         public object Model { get { throw null; } }
     }
     public partial class ValidationStateDictionary : System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object, Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationStateEntry>>, System.Collections.Generic.IDictionary<object, Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationStateEntry>, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object, Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationStateEntry>>, System.Collections.Generic.IReadOnlyCollection<System.Collections.Generic.KeyValuePair<object, Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationStateEntry>>, System.Collections.Generic.IReadOnlyDictionary<object, Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationStateEntry>, System.Collections.IEnumerable
@@ -1008,18 +1050,18 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding.Validation
     public partial class ValidationStateEntry
     {
         public ValidationStateEntry() { }
-        public string Key { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata Metadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.Validation.IValidationStrategy Strategy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool SuppressValidation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Key { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata Metadata { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.Validation.IValidationStrategy Strategy { get { throw null; } set { } }
+        public bool SuppressValidation { get { throw null; } set { } }
     }
     public partial class ValidatorItem
     {
         public ValidatorItem() { }
         public ValidatorItem(object validatorMetadata) { }
-        public bool IsReusable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Mvc.ModelBinding.Validation.IModelValidator Validator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public object ValidatorMetadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsReusable { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Mvc.ModelBinding.Validation.IModelValidator Validator { get { throw null; } set { } }
+        public object ValidatorMetadata { get { throw null; } }
     }
 }
 namespace Microsoft.AspNetCore.Mvc.Routing
@@ -1027,29 +1069,49 @@ namespace Microsoft.AspNetCore.Mvc.Routing
     public partial class AttributeRouteInfo
     {
         public AttributeRouteInfo() { }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int Order { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool SuppressLinkGeneration { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool SuppressPathMatching { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Template { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { get { throw null; } set { } }
+        public int Order { get { throw null; } set { } }
+        public bool SuppressLinkGeneration { get { throw null; } set { } }
+        public bool SuppressPathMatching { get { throw null; } set { } }
+        public string Template { get { throw null; } set { } }
     }
     public partial class UrlActionContext
     {
         public UrlActionContext() { }
-        public string Action { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Controller { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Fragment { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Host { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Protocol { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public object Values { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Action { get { throw null; } set { } }
+        public string Controller { get { throw null; } set { } }
+        public string Fragment { get { throw null; } set { } }
+        public string Host { get { throw null; } set { } }
+        public string Protocol { get { throw null; } set { } }
+        public object Values { get { throw null; } set { } }
     }
     public partial class UrlRouteContext
     {
         public UrlRouteContext() { }
-        public string Fragment { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Host { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Protocol { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string RouteName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public object Values { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Fragment { get { throw null; } set { } }
+        public string Host { get { throw null; } set { } }
+        public string Protocol { get { throw null; } set { } }
+        public string RouteName { get { throw null; } set { } }
+        public object Values { get { throw null; } set { } }
+    }
+}
+namespace Microsoft.Extensions.Internal
+{
+    internal static partial class ClosedGenericMatcher
+    {
+        public static System.Type ExtractGenericInterface(System.Type queryType, System.Type interfaceType) { throw null; }
+    }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    internal partial struct HashCodeCombiner
+    {
+        private int _dummyPrimitive;
+        public int CombinedHash { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]get { throw null; } }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]public void Add(System.Collections.IEnumerable e) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]public void Add(int i) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]public void Add(object o) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]public void Add(string s) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]public void Add<TValue>(TValue value, System.Collections.Generic.IEqualityComparer<TValue> comparer) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]public static implicit operator int (Microsoft.Extensions.Internal.HashCodeCombiner self) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]public static Microsoft.Extensions.Internal.HashCodeCombiner Start() { throw null; }
     }
 }

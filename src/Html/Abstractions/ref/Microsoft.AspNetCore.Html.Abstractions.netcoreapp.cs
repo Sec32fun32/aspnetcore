@@ -9,6 +9,7 @@ namespace Microsoft.AspNetCore.Html
         public HtmlContentBuilder(System.Collections.Generic.IList<object> entries) { }
         public HtmlContentBuilder(int capacity) { }
         public int Count { get { throw null; } }
+        internal System.Collections.Generic.IList<object> Entries { get { throw null; } }
         public Microsoft.AspNetCore.Html.IHtmlContentBuilder Append(string unencoded) { throw null; }
         public Microsoft.AspNetCore.Html.IHtmlContentBuilder AppendHtml(Microsoft.AspNetCore.Html.IHtmlContent htmlContent) { throw null; }
         public Microsoft.AspNetCore.Html.IHtmlContentBuilder AppendHtml(string encoded) { throw null; }
@@ -41,7 +42,7 @@ namespace Microsoft.AspNetCore.Html
         public static readonly Microsoft.AspNetCore.Html.HtmlString Empty;
         public static readonly Microsoft.AspNetCore.Html.HtmlString NewLine;
         public HtmlString(string value) { }
-        public string Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Value { get { throw null; } }
         public override string ToString() { throw null; }
         public void WriteTo(System.IO.TextWriter writer, System.Text.Encodings.Web.HtmlEncoder encoder) { }
     }

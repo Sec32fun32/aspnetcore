@@ -38,15 +38,15 @@ namespace Microsoft.AspNetCore.Routing
     public partial class LinkOptions
     {
         public LinkOptions() { }
-        public bool? AppendTrailingSlash { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool? LowercaseQueryStrings { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool? LowercaseUrls { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool? AppendTrailingSlash { get { throw null; } set { } }
+        public bool? LowercaseQueryStrings { get { throw null; } set { } }
+        public bool? LowercaseUrls { get { throw null; } set { } }
     }
     public partial class RouteContext
     {
         public RouteContext(Microsoft.AspNetCore.Http.HttpContext httpContext) { }
-        public Microsoft.AspNetCore.Http.RequestDelegate Handler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.AspNetCore.Http.HttpContext HttpContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.AspNetCore.Http.RequestDelegate Handler { get { throw null; } set { } }
+        public Microsoft.AspNetCore.Http.HttpContext HttpContext { get { throw null; } }
         public Microsoft.AspNetCore.Routing.RouteData RouteData { get { throw null; } set { } }
     }
     public partial class RouteData
@@ -62,6 +62,7 @@ namespace Microsoft.AspNetCore.Routing
         public readonly partial struct RouteDataSnapshot
         {
             private readonly object _dummy;
+            private readonly int _dummyPrimitive;
             public RouteDataSnapshot(Microsoft.AspNetCore.Routing.RouteData routeData, Microsoft.AspNetCore.Routing.RouteValueDictionary dataTokens, System.Collections.Generic.IList<Microsoft.AspNetCore.Routing.IRouter> routers, Microsoft.AspNetCore.Routing.RouteValueDictionary values) { throw null; }
             public void Restore() { }
         }
@@ -80,17 +81,40 @@ namespace Microsoft.AspNetCore.Routing
     {
         public VirtualPathContext(Microsoft.AspNetCore.Http.HttpContext httpContext, Microsoft.AspNetCore.Routing.RouteValueDictionary ambientValues, Microsoft.AspNetCore.Routing.RouteValueDictionary values) { }
         public VirtualPathContext(Microsoft.AspNetCore.Http.HttpContext httpContext, Microsoft.AspNetCore.Routing.RouteValueDictionary ambientValues, Microsoft.AspNetCore.Routing.RouteValueDictionary values, string routeName) { }
-        public Microsoft.AspNetCore.Routing.RouteValueDictionary AmbientValues { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Http.HttpContext HttpContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string RouteName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.AspNetCore.Routing.RouteValueDictionary Values { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Routing.RouteValueDictionary AmbientValues { get { throw null; } }
+        public Microsoft.AspNetCore.Http.HttpContext HttpContext { get { throw null; } }
+        public string RouteName { get { throw null; } }
+        public Microsoft.AspNetCore.Routing.RouteValueDictionary Values { get { throw null; } set { } }
     }
     public partial class VirtualPathData
     {
         public VirtualPathData(Microsoft.AspNetCore.Routing.IRouter router, string virtualPath) { }
         public VirtualPathData(Microsoft.AspNetCore.Routing.IRouter router, string virtualPath, Microsoft.AspNetCore.Routing.RouteValueDictionary dataTokens) { }
         public Microsoft.AspNetCore.Routing.RouteValueDictionary DataTokens { get { throw null; } }
-        public Microsoft.AspNetCore.Routing.IRouter Router { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.AspNetCore.Routing.IRouter Router { get { throw null; } set { } }
         public string VirtualPath { get { throw null; } set { } }
+    }
+}
+namespace Microsoft.Extensions.Internal
+{
+    internal partial class PropertyHelper
+    {
+        public PropertyHelper(System.Reflection.PropertyInfo property) { }
+        public virtual string Name { get { throw null; } protected set { } }
+        public System.Reflection.PropertyInfo Property { get { throw null; } }
+        public System.Func<object, object> ValueGetter { get { throw null; } }
+        public System.Action<object, object> ValueSetter { get { throw null; } }
+        public static Microsoft.Extensions.Internal.PropertyHelper[] GetProperties(System.Reflection.TypeInfo typeInfo) { throw null; }
+        public static Microsoft.Extensions.Internal.PropertyHelper[] GetProperties(System.Type type) { throw null; }
+        protected static Microsoft.Extensions.Internal.PropertyHelper[] GetProperties(System.Type type, System.Func<System.Reflection.PropertyInfo, Microsoft.Extensions.Internal.PropertyHelper> createPropertyHelper, System.Collections.Concurrent.ConcurrentDictionary<System.Type, Microsoft.Extensions.Internal.PropertyHelper[]> cache) { throw null; }
+        public object GetValue(object instance) { throw null; }
+        public static Microsoft.Extensions.Internal.PropertyHelper[] GetVisibleProperties(System.Reflection.TypeInfo typeInfo) { throw null; }
+        public static Microsoft.Extensions.Internal.PropertyHelper[] GetVisibleProperties(System.Type type) { throw null; }
+        protected static Microsoft.Extensions.Internal.PropertyHelper[] GetVisibleProperties(System.Type type, System.Func<System.Reflection.PropertyInfo, Microsoft.Extensions.Internal.PropertyHelper> createPropertyHelper, System.Collections.Concurrent.ConcurrentDictionary<System.Type, Microsoft.Extensions.Internal.PropertyHelper[]> allPropertiesCache, System.Collections.Concurrent.ConcurrentDictionary<System.Type, Microsoft.Extensions.Internal.PropertyHelper[]> visiblePropertiesCache) { throw null; }
+        public static System.Func<object, object> MakeFastPropertyGetter(System.Reflection.PropertyInfo propertyInfo) { throw null; }
+        public static System.Action<object, object> MakeFastPropertySetter(System.Reflection.PropertyInfo propertyInfo) { throw null; }
+        public static System.Func<object, object> MakeNullSafeFastPropertyGetter(System.Reflection.PropertyInfo propertyInfo) { throw null; }
+        public static System.Collections.Generic.IDictionary<string, object> ObjectToDictionary(object value) { throw null; }
+        public void SetValue(object instance, object value) { }
     }
 }
