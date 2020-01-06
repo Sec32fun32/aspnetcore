@@ -10,7 +10,7 @@
 
     <MSBuild Projects="$(MSBuildProjectFullPath)"
         Targets="_GenerateProjectSourceInner"
-        Properties="TargetFramework=$(DefaultNetCoreTargetFramework);CompileUsingReferenceAssemblies=false">
+        Properties="TargetFramework=$(DefaultNetCoreTargetFramework);CompileUsingReferenceAssemblies=false;RunApiCompat=false">
       <Output TaskParameter="TargetOutputs" ItemName="ProjectListContentItem" />
     </MSBuild>
 

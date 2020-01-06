@@ -150,6 +150,21 @@
     <NetCoreTargetingPackRoot>$(LocalDotNetRoot)packs\</NetCoreTargetingPackRoot>
   </PropertyGroup>
 
+  <!-- Microsoft.DotNet.ApiCompat.targets will not override the following settings, if non-empty. -->
+  <PropertyGroup Label="ApiCompat default settings">
+    <AdditionalApiCompatOptions
+        Condition=" '$(AdditionalApiCompatOptions)' == '' ">--respect-internals --exclude-compiler-generated</AdditionalApiCompatOptions>
+    <ApiCompatEnforceOptionalRules
+        Condition=" '$(ApiCompatEnforceOptionalRules)' == '' ">true</ApiCompatEnforceOptionalRules>
+
+    <!-- Only run ApiCompat on Windows. -->
+    <RunApiCompat Condition=" '$(TargetOsName)' != 'win' ">false</RunApiCompat>
+
+    <!-- Perform reverse check unless generating baselines. Separate baselines are wasteful; nothing left out of ref/ assemblies. -->
+    <RunMatchingRefApiCompat
+        Condition=" '$(RunMatchingRefApiCompat)' == '' AND '$(BaselineAllAPICompatError)' != 'true' ">true</RunMatchingRefApiCompat>
+  </PropertyGroup>
+
   <Import Project="eng\tools\RepoTasks\RepoTasks.tasks" Condition="'$(MSBuildProjectName)' != 'RepoTasks' AND '$(DesignTimeBuild)' != 'true'" />
 
   <PropertyGroup>

@@ -413,6 +413,10 @@
       <Uri>https://dev.azure.com/dnceng/internal/_git/dotnet-extensions</Uri>
       <Sha>877455ff72cbb5834c52c12ce962f1417f5477c8</Sha>
     </Dependency>
+    <Dependency Name="Microsoft.DotNet.APICompat" Version="1.0.0-beta.20213.4">
+      <Uri>https://github.com/dotnet/arcade</Uri>
+      <Sha>1a55276ab9d16792cec595ba870df39a9d97d5ca</Sha>
+    </Dependency>
     <Dependency Name="Microsoft.DotNet.GenAPI" Version="1.0.0-beta.20213.4">
       <Uri>https://github.com/dotnet/arcade</Uri>
       <Sha>1a55276ab9d16792cec595ba870df39a9d97d5ca</Sha>

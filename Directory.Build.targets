@@ -121,6 +121,55 @@
     <AssemblyVersion>$(AspNetCoreMajorVersion).$(AspNetCoreMinorVersion).0.0</AssemblyVersion>
   </PropertyGroup>
 
+  <!-- Override settings from Microsoft.DotNet.ApiCompat.targets that require info from that file or the project. -->
+  <PropertyGroup Label="ApiCompat settings">
+    <!-- Use same baseline file for reverse check; nothing left out of ref/ assemblies. -->
+    <MatchingRefApiCompatBaseline>$(ApiCompatBaseline)</MatchingRefApiCompatBaseline>
+
+    <!-- Only run ApiCompat on projects with ref/ assemblies. -->
+    <RunApiCompat Condition=" ! $(HasReferenceAssembly) ">false</RunApiCompat>
+
+    <!-- Only run ApiCompat when targeting the default TFM. -->
+    <RunApiCompat Condition=" '$(TargetFramework)' != '$(DefaultNetCoreTargetFramework)' ">false</RunApiCompat>
+
+    <TargetsTriggeredByCompilation Condition=" '$(RunApiCompat)' != 'false' ">
+      HackApiCompatPaths;$(TargetsTriggeredByCompilation);RemoveUselessApiCompatBaselines
+    </TargetsTriggeredByCompilation>
+  </PropertyGroup>
+
+  <!-- Provide information from RAR to Microsoft.DotNet.ApiCompat.targets targets. -->
+  <Target Name="HackApiCompatPaths" DependsOnTargets="GetReferenceProjectTargetPathMetadata;ResolveTargetingPackAssets">
+    <ItemGroup>
+      <!-- All paired ref/ and src/ projects should resolve the same assemblies for compilation. -->
+      <_RefDependencyDirectoriesTemp Include="@(ReferencePath -> '%(RootDir)%(Directory)')" />
+      <!-- Remove duplicate directories by batching over them, duplicating Microsoft.DotNet.ApiCompat.targets approach. -->
+      <!-- Add project references first to give precedence to project-specific files. -->
+      <_RefDependencyDirectories Include="%(_RefDependencyDirectoriesTemp.Identity)"
+          Condition="'%(_RefDependencyDirectoriesTemp.ReferenceSourceTarget)' == 'ProjectReference'" />
+      <_RefDependencyDirectories Include="%(_RefDependencyDirectoriesTemp.Identity)"
+          Condition="'%(_RefDependencyDirectoriesTemp.ReferenceSourceTarget)' != 'ProjectReference'" />
+
+      <ResolvedMatchingContract Include="@(ReferenceProjectTargetPathMetadata -> '%(IntermediateAssembly)')">
+        <DependencyPaths>@(_RefDependencyDirectories, ',')</DependencyPaths>
+      </ResolvedMatchingContract>
+    </ItemGroup>
+  </Target>
+
+  <!--
+    Clean up empty ApiCompat baseline file.
+    Though run after ValidateApiCompatForSrc, will also an remove older baseline file.
+  -->
+  <Target Name="RemoveUselessApiCompatBaselines">
+    <PropertyGroup>
+      <_BaselineText />
+      <_BaselineText Condition=" Exists('$(ApiCompatBaseline)') ">
+        $([System.IO.File]::ReadAllText('$(ApiCompatBaseline)'))
+      </_BaselineText>
+    </PropertyGroup>
+
+    <Delete Files="$(ApiCompatBaseline)" Condition=" $(_BaselineText.Contains('Total Issues: 0')) " />
+  </Target>
+
   <ItemGroup>
     <KnownFrameworkReference Update="Microsoft.NETCore.App">
       <!-- Always update the 'latest version', whether the repo is servicing or not. -->
