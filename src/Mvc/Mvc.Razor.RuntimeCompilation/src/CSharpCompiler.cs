@@ -159,13 +159,13 @@ namespace Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
         {
             var csharpCompilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary);
 
-            // Disable 1702 until roslyn turns this off by default
+            // Disable 1702 until Roslyn turns this off by default
             csharpCompilationOptions = csharpCompilationOptions.WithSpecificDiagnosticOptions(
                 new Dictionary<string, ReportDiagnostic>
                 {
-                    {"CS1701", ReportDiagnostic.Suppress}, // Binding redirects
-                    {"CS1702", ReportDiagnostic.Suppress},
-                    {"CS1705", ReportDiagnostic.Suppress}
+                    {"CS1701", ReportDiagnostic.Suppress}, // Must have a runtime policy (differ in release / version)
+                    {"CS1702", ReportDiagnostic.Suppress}, // May need a runtime policy (differ in build / revision)
+                    {"CS1705", ReportDiagnostic.Suppress}, // Indirect reference on type in assembly w/ higher version
                 });
 
             if (dependencyContextOptions.AllowUnsafe.HasValue)
