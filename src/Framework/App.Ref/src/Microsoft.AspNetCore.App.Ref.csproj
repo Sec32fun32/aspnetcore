@@ -41,11 +41,21 @@ This package is an internal implementation of the .NET Core SDK and is not meant
 
     <!-- Reference implementation assemblies in addition to ref assemblies to get xml docs -->
     <ReferenceImplementationAssemblies>true</ReferenceImplementationAssemblies>
+
     <!--
       We are ignoring MSB3243 warnings since implementation and reference assemblies are versioned differently.
       We need both to compose the targeting pack with reference assemblies and xml docs.
     -->
-    <MSBuildWarningsAsMessages>MSB3243</MSBuildWarningsAsMessages>
+    <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3243</MSBuildWarningsAsMessages>
+
+    <!--
+      Ignore MSB3277 warnings. Packages such as System.IO.Pipelines have newer versions than what we want to include in
+      targeting packs. We pin those packages to lower versions in this project but use the latest everywhere else (see
+      eng/SharedFramework.External.props). Direct references in this project to _older_ packages don't avoid MSB3277
+      warnings but (fortunately) help ResolveAssemblyReferences resolve the correct (older) reference assemblies.
+    -->
+    <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
+
     <!-- We are ignoring NU5131 and NU5128 warnings since the dependency group should be kept empty. -->
     <NoWarn>$(NoWarn);NU5131;NU5128</NoWarn>
 
@@ -62,7 +72,10 @@ This package is an internal implementation of the .NET Core SDK and is not meant
 
   <ItemGroup>
     <!-- Note: do not add _TransitiveExternalAspNetCoreAppReference to this list. This is intentionally not listed as a direct package reference. -->
-    <Reference Include="@(AspNetCoreAppReference);@(AspNetCoreAppReferenceAndPackage);@(ExternalAspNetCoreAppReference)" />
+    <Reference Include="@(AspNetCoreAppReference);@(AspNetCoreAppReferenceAndPackage);@(ExternalAspNetCoreAppReference)">
+      <IncludeAssets>Compile</IncludeAssets>
+    </Reference>
+
     <!-- Enforce build order. Targeting pack needs to bundle information about the runtime. -->
     <ProjectReference Include="..\..\App.Runtime\src\Microsoft.AspNetCore.App.Runtime.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
