@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Templates.Test.Helpers;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.AspNetCore.Testing;
 
 namespace Templates.Test
 {
@@ -30,8 +29,7 @@ namespace Templates.Test
             }
         }
 
-        [ConditionalTheory]
-        [OSSkipCondition(OperatingSystems.Linux, SkipReason = "https://github.com/dotnet/sdk/issues/12831")]
+        [Theory]
         [InlineData("C#")]
         [InlineData("F#")]
         [QuarantinedTest("https://github.com/dotnet/aspnetcore/issues/25404")]
