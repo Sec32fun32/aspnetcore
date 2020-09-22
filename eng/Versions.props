@@ -58,10 +58,10 @@
   <PropertyGroup Label="Automated">
     <!-- Packages from dotnet/runtime -->
     <MicrosoftExtensionsDependencyModelPackageVersion>5.0.0</MicrosoftExtensionsDependencyModelPackageVersion>
-    <MicrosoftNETCoreAppInternalPackageVersion>5.0.1-servicing.20461.10</MicrosoftNETCoreAppInternalPackageVersion>
-    <MicrosoftNETCoreAppRefPackageVersion>5.0.0</MicrosoftNETCoreAppRefPackageVersion>
-    <MicrosoftNETCoreAppRuntimewinx64PackageVersion>5.0.1</MicrosoftNETCoreAppRuntimewinx64PackageVersion>
-    <MicrosoftNETCoreBrowserDebugHostTransportPackageVersion>5.0.0-servicing.20461.10</MicrosoftNETCoreBrowserDebugHostTransportPackageVersion>
+    <MicrosoftNETCoreAppInternalPackageVersion>5.0.2-servicing.20464.5</MicrosoftNETCoreAppInternalPackageVersion>
+    <MicrosoftNETCoreAppRefPackageVersion>5.0.2</MicrosoftNETCoreAppRefPackageVersion>
+    <MicrosoftNETCoreAppRuntimewinx64PackageVersion>5.0.2</MicrosoftNETCoreAppRuntimewinx64PackageVersion>
+    <MicrosoftNETCoreBrowserDebugHostTransportPackageVersion>5.0.0-servicing.20464.5</MicrosoftNETCoreBrowserDebugHostTransportPackageVersion>
     <MicrosoftWin32RegistryPackageVersion>5.0.0</MicrosoftWin32RegistryPackageVersion>
     <MicrosoftWin32SystemEventsPackageVersion>5.0.0</MicrosoftWin32SystemEventsPackageVersion>
     <MicrosoftExtensionsCachingAbstractionsPackageVersion>5.0.0</MicrosoftExtensionsCachingAbstractionsPackageVersion>
@@ -98,10 +98,10 @@
     <MicrosoftExtensionsOptionsDataAnnotationsPackageVersion>5.0.0</MicrosoftExtensionsOptionsDataAnnotationsPackageVersion>
     <MicrosoftExtensionsOptionsPackageVersion>5.0.0</MicrosoftExtensionsOptionsPackageVersion>
     <MicrosoftExtensionsPrimitivesPackageVersion>5.0.0</MicrosoftExtensionsPrimitivesPackageVersion>
-    <MicrosoftExtensionsInternalTransportPackageVersion>5.0.0-rtm.20461.9</MicrosoftExtensionsInternalTransportPackageVersion>
+    <MicrosoftExtensionsInternalTransportPackageVersion>5.0.2-servicing.20464.5</MicrosoftExtensionsInternalTransportPackageVersion>
     <SystemComponentModelAnnotationsPackageVersion>5.0.0</SystemComponentModelAnnotationsPackageVersion>
     <SystemDiagnosticsDiagnosticSourcePackageVersion>5.0.0</SystemDiagnosticsDiagnosticSourcePackageVersion>
-    <SystemDiagnosticsEventLogPackageVersion>5.0.0</SystemDiagnosticsEventLogPackageVersion>
+    <SystemDiagnosticsEventLogPackageVersion>5.0.2</SystemDiagnosticsEventLogPackageVersion>
     <SystemDirectoryServicesProtocolsPackageVersion>5.0.0</SystemDirectoryServicesProtocolsPackageVersion>
     <SystemDrawingCommonPackageVersion>5.0.0</SystemDrawingCommonPackageVersion>
     <SystemIOPipelinesPackageVersion>5.0.0</SystemIOPipelinesPackageVersion>
