@@ -18,7 +18,7 @@ namespace Microsoft.AspNetCore.Components.Analyzers
         {
             if (!source.EndsWith(".cs"))
             {
-                source = source + ".cs";
+                source += ".cs";
             }
 
             var filePath = Path.Combine(ProjectDirectory, "TestFiles", GetType().Name, source);
@@ -35,7 +35,7 @@ namespace Microsoft.AspNetCore.Components.Analyzers
         {
             if (!source.EndsWith(".cs"))
             {
-                source = source + ".cs";
+                source += ".cs";
             }
 
             var read = Read(source);
@@ -49,19 +49,8 @@ namespace Microsoft.AspNetCore.Components.Analyzers
 
         private static string GetProjectDirectory()
         {
-            // On helix we use the published test files
-            if (SkipOnHelixAttribute.OnHelix())
-            {
-                return AppContext.BaseDirectory;
-            }
-
-            // This test code needs to be updated to support distributed testing.
-            // See https://github.com/dotnet/aspnetcore/issues/10422
-#pragma warning disable 0618
-            var solutionDirectory = TestPathUtilities.GetSolutionRootDirectory("Components");
-#pragma warning restore 0618
-            var projectDirectory = Path.Combine(solutionDirectory, "Analyzers", "test");
-            return projectDirectory;
+            // Test files are copied to both the bin/ and publish/ folders. Use BaseDirectory on or off Helix.
+            return AppContext.BaseDirectory;
         }
     }
 }
