@@ -59,6 +59,8 @@ try {
 
     . "$repoRoot/activate.ps1"
 
+    Get-ChildItem env:
+
     #
     # Duplicate .csproj files can cause issues with a shared build output folder
     #
