@@ -5,14 +5,16 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <Authors>Microsoft</Authors>
     <Copyright>Copyright © Microsoft Corporation</Copyright>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/aspnet/Home/2.0.0/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/dotnet/aspnetcore/2.0.0/LICENSE.txt</PackageLicenseUrl>
     <PackageIconUrl>https://go.microsoft.com/fwlink/?LinkID=288859</PackageIconUrl>
     <PackageProjectUrl>https://asp.net</PackageProjectUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <PackageTags>aspnetcore</PackageTags>
-    <ContentTargetFolders></ContentTargetFolders>
-    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <ContentTargetFolders />
+
+    <!-- Silence NU5123 (long package path) and NU5125 (license URL use) errors. -->
+    <NoWarn>$(NoWarn);NU5123;NU5125</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
