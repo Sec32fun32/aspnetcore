@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.1;net461</TargetFrameworks>
+
+    <!--
+      Align w/ referenced project to avoid 'warning MSB3270: There was a mismatch between the processor architecture
+      of the project being built "MSIL" and the processor architecture of the reference
+      "...\win7-x86\Microsoft.AspNetCore.Mvc.Razor.ViewCompilation-x86.exe", "x86". ...'.
+    -->
+    <PlatformTarget Condition="'$(Platform)'=='AnyCPU'">x86</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
