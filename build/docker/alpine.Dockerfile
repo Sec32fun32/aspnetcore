@@ -13,7 +13,10 @@ RUN apk add --no-cache \
         git \
         jq \
         curl \
-        icu-libs \
+        icu \
+        libcurl \
+        libssl1.1 \
+        libunwind \
         openssl
 
 USER $USER_ID:$GROUP_ID
