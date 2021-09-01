@@ -6,6 +6,7 @@
     <PublishWindowsPdb>true</PublishWindowsPdb>
     <!-- Need to build this project in source build -->
     <ExcludeFromSourceBuild>false</ExcludeFromSourceBuild>
+    <NoWarn>$(NoWarn);NU5104</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
