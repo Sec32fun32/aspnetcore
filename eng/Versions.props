@@ -66,11 +66,11 @@
     <!-- Packages from dotnet/runtime -->
     <MicrosoftExtensionsDependencyModelVersion>6.0.0</MicrosoftExtensionsDependencyModelVersion>
     <MicrosoftNETCoreAppRefVersion>6.0.0</MicrosoftNETCoreAppRefVersion>
-    <MicrosoftNETCoreAppRuntimewinx64Version>6.0.0</MicrosoftNETCoreAppRuntimewinx64Version>
-    <MicrosoftNETRuntimeMonoAOTCompilerTaskVersion>6.0.0</MicrosoftNETRuntimeMonoAOTCompilerTaskVersion>
-    <MicrosoftNETRuntimeWebAssemblySdkVersion>6.0.0</MicrosoftNETRuntimeWebAssemblySdkVersion>
-    <MicrosoftNETCoreAppRuntimeAOTwinx64CrossbrowserwasmVersion>6.0.0</MicrosoftNETCoreAppRuntimeAOTwinx64CrossbrowserwasmVersion>
-    <MicrosoftNETCoreBrowserDebugHostTransportVersion>6.0.0-rtm.21426.20</MicrosoftNETCoreBrowserDebugHostTransportVersion>
+    <MicrosoftNETCoreAppRuntimewinx64Version>6.0.1</MicrosoftNETCoreAppRuntimewinx64Version>
+    <MicrosoftNETRuntimeMonoAOTCompilerTaskVersion>6.0.1</MicrosoftNETRuntimeMonoAOTCompilerTaskVersion>
+    <MicrosoftNETRuntimeWebAssemblySdkVersion>6.0.1</MicrosoftNETRuntimeWebAssemblySdkVersion>
+    <MicrosoftNETCoreAppRuntimeAOTwinx64CrossbrowserwasmVersion>6.0.1</MicrosoftNETCoreAppRuntimeAOTwinx64CrossbrowserwasmVersion>
+    <MicrosoftNETCoreBrowserDebugHostTransportVersion>6.0.1-servicing.21431.17</MicrosoftNETCoreBrowserDebugHostTransportVersion>
     <MicrosoftExtensionsCachingAbstractionsVersion>6.0.0</MicrosoftExtensionsCachingAbstractionsVersion>
     <MicrosoftExtensionsCachingMemoryVersion>6.0.0</MicrosoftExtensionsCachingMemoryVersion>
     <MicrosoftExtensionsConfigurationAbstractionsVersion>6.0.0</MicrosoftExtensionsConfigurationAbstractionsVersion>
@@ -108,10 +108,10 @@
     <MicrosoftWin32SystemEventsVersion>6.0.0</MicrosoftWin32SystemEventsVersion>
     <MicrosoftInternalRuntimeAspNetCoreTransportVersion>6.0.0-rtm.21426.20</MicrosoftInternalRuntimeAspNetCoreTransportVersion>
     <SystemDiagnosticsDiagnosticSourceVersion>6.0.0</SystemDiagnosticsDiagnosticSourceVersion>
-    <SystemDiagnosticsEventLogVersion>6.0.0</SystemDiagnosticsEventLogVersion>
+    <SystemDiagnosticsEventLogVersion>6.0.1</SystemDiagnosticsEventLogVersion>
     <SystemDirectoryServicesProtocolsVersion>6.0.0</SystemDirectoryServicesProtocolsVersion>
     <SystemDrawingCommonVersion>6.0.0</SystemDrawingCommonVersion>
-    <SystemIOPipelinesVersion>6.0.0</SystemIOPipelinesVersion>
+    <SystemIOPipelinesVersion>6.0.1</SystemIOPipelinesVersion>
     <SystemNetHttpJsonVersion>6.0.0</SystemNetHttpJsonVersion>
     <SystemNetHttpWinHttpHandlerVersion>6.0.0</SystemNetHttpWinHttpHandlerVersion>
     <SystemReflectionMetadataVersion>6.0.0</SystemReflectionMetadataVersion>
