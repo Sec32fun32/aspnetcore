@@ -134,11 +134,6 @@ namespace Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http3
 
         public void Abort(ConnectionAbortedException abortReason, Http3ErrorCode errorCode)
         {
-            AbortCore(abortReason, errorCode);
-        }
-
-        private void AbortCore(Exception exception, Http3ErrorCode errorCode)
-        {
             lock (_completionLock)
             {
                 if (IsCompleted)
@@ -153,27 +148,26 @@ namespace Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http3
                     return;
                 }
 
-                if (!(exception is ConnectionAbortedException abortReason))
-                {
-                    abortReason = new ConnectionAbortedException(exception.Message, exception);
-                }
-
                 Log.Http3StreamAbort(TraceIdentifier, errorCode, abortReason);
 
-                // Call _http3Output.Stop() prior to poisoning the request body stream or pipe to
-                // ensure that an app that completes early due to the abort doesn't result in header frames being sent.
-                _http3Output.Stop();
-
-                CancelRequestAbortedToken();
-
-                // Unblock the request body.
-                PoisonBody(exception);
-                RequestBodyPipe.Writer.Complete(exception);
-
-                // Abort framewriter and underlying transport after stopping output.
                 _errorCodeFeature.Error = (long)errorCode;
                 _frameWriter.Abort(abortReason);
+
+                AbortCore(abortReason);
             }
+        }
+
+        private void AbortCore(Exception exception)
+        {
+            // Call _http3Output.Stop() prior to poisoning the request body stream or pipe to
+            // ensure that an app that completes early due to the abort doesn't result in header frames being sent.
+            _http3Output.Stop();
+
+            CancelRequestAbortedToken();
+
+            // Unblock the request body.
+            PoisonBody(exception);
+            RequestBodyPipe.Writer.Complete(exception);
         }
 
         protected override void OnErrorAfterResponseStarted()
@@ -476,8 +470,7 @@ namespace Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http3
             catch (ConnectionResetException ex)
             {
                 error = ex;
-                var resolvedErrorCode = _errorCodeFeature.Error >= 0 ? _errorCodeFeature.Error : 0;
-                AbortCore(new IOException(CoreStrings.HttpStreamResetByClient, ex), (Http3ErrorCode)resolvedErrorCode);
+                AbortCore(new IOException(CoreStrings.HttpStreamResetByClient, ex));
             }
             catch (Exception ex)
             {
@@ -491,44 +484,10 @@ namespace Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http3
 
                 await Input.CompleteAsync();
 
-                var appCompleted = _appCompleted?.Task ?? Task.CompletedTask;
-                if (!appCompleted.IsCompletedSuccessfully)
+                // Make sure application func is completed before completing writer.
+                if (_appCompleted != null)
                 {
-                    // At this point in the stream's read-side is complete. However, with HTTP/3
-                    // the write-side of the stream can still be aborted by the client on request
-                    // aborted.
-                    //
-                    // To get notification of request aborted we register to connection closed
-                    // token. It will notify this type that the client has aborted the request
-                    // and Kestrel will complete pipes and cancel the RequestAborted token.
-                    //
-                    // Only subscribe to this event after the stream's read-side is complete to
-                    // avoid interactions between reading that is in-progress and an abort.
-                    // This means while reading, read-side abort will handle getting abort notifications.
-                    //
-                    // We don't need to hang on to the CancellationTokenRegistration from register.
-                    // The CTS is cleaned up in StreamContext.DisposeAsync.
-                    //
-                    // TODO: Consider a better way to provide this notification. For perf we want to
-                    // make the ConnectionClosed CTS pay-for-play, and change this event to use
-                    // something that is more lightweight than a CTS.
-                    _context.StreamContext.ConnectionClosed.Register(static s =>
-                    {
-                        var stream = (Http3Stream)s!;
-
-                        if (!stream.IsCompleted)
-                        {
-                            // An error code value other than -1 indicates a value was set and the request didn't gracefully complete.
-                            var errorCode = stream._errorCodeFeature.Error;
-                            if (errorCode >= 0)
-                            {
-                                stream.AbortCore(new IOException(CoreStrings.HttpStreamResetByClient), (Http3ErrorCode)errorCode);
-                            }
-                        }
-                    }, this);
-
-                    // Make sure application func is completed before completing writer.
-                    await appCompleted;
+                    await _appCompleted.Task;
                 }
 
                 try

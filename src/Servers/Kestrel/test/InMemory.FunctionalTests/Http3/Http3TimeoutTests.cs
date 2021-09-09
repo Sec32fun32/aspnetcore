@@ -263,10 +263,10 @@ namespace Microsoft.AspNetCore.Server.Kestrel.Core.Tests
             await requestStream.OnDisposingTask.DefaultTimeout();
 
             Http3Api.TriggerTick(now);
-            Assert.Null(requestStream.StreamContext._error);
+            Assert.Equal(0, requestStream.Error);
 
             Http3Api.TriggerTick(now + TimeSpan.FromTicks(1));
-            Assert.Null(requestStream.StreamContext._error);
+            Assert.Equal(0, requestStream.Error);
 
             Http3Api.TriggerTick(now + limits.MinResponseDataRate.GracePeriod + TimeSpan.FromTicks(1));
 

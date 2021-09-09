@@ -19,8 +19,7 @@ namespace Microsoft.AspNetCore.Server.Kestrel.Transport.Quic.Internal
         void StreamPause(QuicStreamContext streamContext);
         void StreamResume(QuicStreamContext streamContext);
         void StreamShutdownWrite(QuicStreamContext streamContext, string reason);
-        void StreamAbortedRead(QuicStreamContext streamContext, long errorCode);
-        void StreamAbortedWrite(QuicStreamContext streamContext, long errorCode);
+        void StreamAborted(QuicStreamContext streamContext, long errorCode, Exception ex);
         void StreamAbort(QuicStreamContext streamContext, long errorCode, string reason);
         void StreamAbortRead(QuicStreamContext streamContext, long errorCode, string reason);
         void StreamAbortWrite(QuicStreamContext streamContext, long errorCode, string reason);

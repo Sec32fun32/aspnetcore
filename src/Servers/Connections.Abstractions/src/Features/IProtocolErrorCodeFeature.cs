@@ -9,7 +9,7 @@ namespace Microsoft.AspNetCore.Connections.Features
     public interface IProtocolErrorCodeFeature
     {
         /// <summary>
-        /// Gets or sets the error code. The property returns -1 if the error code hasn't been set.
+        /// Gets or sets the error code.
         /// </summary>
         long Error { get; set; }
     }
