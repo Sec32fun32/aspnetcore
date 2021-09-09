@@ -177,6 +177,10 @@
       <Uri>https://dev.azure.com/dnceng/internal/_git/dotnet-runtime</Uri>
       <Sha>c176936f25b347a3575f736358e4249a85f16536</Sha>
     </Dependency>
+    <Dependency Name="Microsoft.Win32.SystemEvents" Version="6.0.0">
+      <Uri>https://dev.azure.com/dnceng/internal/_git/dotnet-runtime</Uri>
+      <Sha>c176936f25b347a3575f736358e4249a85f16536</Sha>
+    </Dependency>
     <Dependency Name="Microsoft.Internal.Runtime.AspNetCore.Transport" Version="6.0.0-rtm.21426.20">
       <Uri>https://dev.azure.com/dnceng/internal/_git/dotnet-runtime</Uri>
       <Sha>c176936f25b347a3575f736358e4249a85f16536</Sha>
@@ -190,6 +194,10 @@
       <Sha>c176936f25b347a3575f736358e4249a85f16536</Sha>
     </Dependency>
     <Dependency Name="System.DirectoryServices.Protocols" Version="6.0.0">
+      <Uri>https://dev.azure.com/dnceng/internal/_git/dotnet-runtime</Uri>
+      <Sha>c176936f25b347a3575f736358e4249a85f16536</Sha>
+    </Dependency>
+    <Dependency Name="System.Drawing.Common" Version="6.0.0">
       <Uri>https://dev.azure.com/dnceng/internal/_git/dotnet-runtime</Uri>
       <Sha>c176936f25b347a3575f736358e4249a85f16536</Sha>
     </Dependency>
@@ -225,6 +233,10 @@
       <Uri>https://dev.azure.com/dnceng/internal/_git/dotnet-runtime</Uri>
       <Sha>c176936f25b347a3575f736358e4249a85f16536</Sha>
     </Dependency>
+    <Dependency Name="System.Security.Permissions" Version="6.0.0">
+      <Uri>https://dev.azure.com/dnceng/internal/_git/dotnet-runtime</Uri>
+      <Sha>c176936f25b347a3575f736358e4249a85f16536</Sha>
+    </Dependency>
     <Dependency Name="System.ServiceProcess.ServiceController" Version="6.0.0">
       <Uri>https://dev.azure.com/dnceng/internal/_git/dotnet-runtime</Uri>
       <Sha>c176936f25b347a3575f736358e4249a85f16536</Sha>
@@ -238,6 +250,10 @@
       <Sha>c176936f25b347a3575f736358e4249a85f16536</Sha>
     </Dependency>
     <Dependency Name="System.Threading.Channels" Version="6.0.0">
+      <Uri>https://dev.azure.com/dnceng/internal/_git/dotnet-runtime</Uri>
+      <Sha>c176936f25b347a3575f736358e4249a85f16536</Sha>
+    </Dependency>
+    <Dependency Name="System.Windows.Extensions" Version="6.0.0">
       <Uri>https://dev.azure.com/dnceng/internal/_git/dotnet-runtime</Uri>
       <Sha>c176936f25b347a3575f736358e4249a85f16536</Sha>
     </Dependency>
