@@ -5,8 +5,10 @@
     <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
     <StartArguments>--update</StartArguments>
     <StartArguments>$(StartArguments) --package-sources https://pkgs.dev.azure.com/dnceng/public/_packaging/darc-pub-dotnet-aspnetcore-93f668a6/nuget/v3/index.json</StartArguments>
+    <StartArguments>$(StartArguments) --package-sources https://pkgs.dev.azure.com/dnceng/public/_packaging/darc-pub-dotnet-aspnetcore-0e6e848e/nuget/v3/index.json</StartArguments>
     <StartArguments>$(StartArguments) --package-sources https://pkgs.dev.azure.com/dnceng/public/_packaging/darc-pub-dotnet-runtime-c176936f/nuget/v3/index.json</StartArguments>
-    <StartArguments>$(StartArguments) --package-sources https://pkgs.dev.azure.com/dnceng/public/_packaging/darc-pub-dotnet-efcore-f5397ce6/nuget/v3/index.json</StartArguments>
+    <StartArguments>$(StartArguments) --package-sources https://pkgs.dev.azure.com/dnceng/public/_packaging/darc-pub-dotnet-runtime-420042f6/nuget/v3/index.json</StartArguments>
+    <StartArguments>$(StartArguments) --package-sources https://pkgs.dev.azure.com/dnceng/public/_packaging/darc-pub-dotnet-efcore-3616fda4/nuget/v3/index.json</StartArguments>
     <StartArguments>$(StartArguments) --package-sources https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-public/nuget/v3/index.json</StartArguments>
     <StartArguments>$(StartArguments) --package-sources https://pkgs.dev.azure.com/dnceng/public/_packaging/general-testing/nuget/v3/index.json</StartArguments>
     <StartWorkingDirectory>$(MSBuildThisFileDirectory)../../</StartWorkingDirectory>
