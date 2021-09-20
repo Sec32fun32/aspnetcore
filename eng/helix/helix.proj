@@ -1,16 +1,31 @@
 <Project Sdk="Microsoft.DotNet.Helix.Sdk" DefaultTargets="Test" TreatAsLocalProperty="ProjectToBuild">
-
   <PropertyGroup>
     <!--
       When invoking helix.proj for the whole repo with build.cmd, ProjectToBuild will be set to the path to this project.
       This must be reset in order for Build.props to evaluate a list of projects to be tested on Helix.
     -->
-    <ProjectToBuild Condition="'$(ProjectToBuild)' == '$(MSBuildProjectFullPath)'"/>
+    <ProjectToBuild Condition="'$(ProjectToBuild)' == '$(MSBuildProjectFullPath)'" />
   </PropertyGroup>
 
   <Import Project="..\targets\Helix.Common.props" />
   <Import Project="..\Build.props" />
   <Import Project="..\Versions.props" />
+
+  <ItemGroup>
+    <!--
+      Ensure shared framework and targeting pack packages are available for correlation payload but not when
+      requirement is suppressed (the default RunHelix.ps1 case).
+    -->
+    <ProjectToBuild Include="$(RepoRoot)\src\Framework\App.Ref\src\Microsoft.AspNetCore.App.Ref.csproj"
+        Condition=" '$(DoNotRequireSharedFxHelix)' != 'true' " />
+
+    <ProjectReference Include="@(ProjectToBuild->Distinct())"
+        BuildInParallel="%(ProjectToBuild.BuildInParallel)"
+        Condition=" @(ProjectToBuild->Count()) != 0 "
+        Private="false"
+        ReferenceOutputAssembly="false"
+        SkipGetTargetFrameworkProperties="true" />
+  </ItemGroup>
 
   <!-- Microsoft.DotNet.Helix.Sdk.MultiQueue.targets splits $(HelixTargetQueues) into @(HelixTargetQueue) items. -->
   <ItemGroup Condition=" '$(HelixTargetQueues)' == '' ">
@@ -24,7 +39,6 @@
     <IsExternal>true</IsExternal>
     <MaxRetryCount Condition="'$(MaxRetryCount)' == ''">2</MaxRetryCount>
     <HelixAccessToken Condition="'$(_UseHelixOpenQueues)' != 'true'">$(HelixApiAccessToken)</HelixAccessToken>
-    <HelixTestConfigurationFilePath>$(RepoRoot)eng/test-configuration.json</HelixTestConfigurationFilePath>
     <IncludeDotNetCli>true</IncludeDotNetCli>
     <DotNetCliPackageType>sdk</DotNetCliPackageType>
     <DotNetCliVersion>$(NETCoreSdkVersion)</DotNetCliVersion>
@@ -44,23 +58,38 @@
     </AdditionalDotNetPackage>
   </ItemGroup>
 
-  <PropertyGroup Condition=" '$(ContinuousIntegrationBuild)' == 'true' ">
-    <HelixType>ci</HelixType>
-    <!-- Creator is not valid for internal queues -->
-    <Creator Condition="'$(_UseHelixOpenQueues)' == 'true'">aspnetcore</Creator>
-    <HelixBuild>$(BUILD_BUILDNUMBER).$(SYSTEM_JOBATTEMPT)</HelixBuild>
-    <WaitForWorkItemCompletion>true</WaitForWorkItemCompletion>
-    <EnableAzurePipelinesReporter>true</EnableAzurePipelinesReporter>
-    <EnableXUnitReporter>true</EnableXUnitReporter>
-  </PropertyGroup>
+  <Choose>
+    <When Condition=" '$(ContinuousIntegrationBuild)' == 'true' ">
+      <PropertyGroup>
+        <!-- Creator is not valid for internal queues -->
+        <Creator Condition="'$(_UseHelixOpenQueues)' == 'true'">aspnetcore</Creator>
 
-  <PropertyGroup Condition=" '$(ContinuousIntegrationBuild)' != 'true' ">
-    <HelixType>dev</HelixType>
-    <!-- Creator is not valid for internal queues -->
-    <Creator Condition="'$(_UseHelixOpenQueues)' == 'true'">$(USERNAME)</Creator>
-    <Creator Condition="'$(USERNAME)' == '' AND '$(_UseHelixOpenQueues)' == 'true'">$(USER)</Creator>
-    <HelixBuild>$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</HelixBuild>
-  </PropertyGroup>
+        <HelixType>ci</HelixType>
+        <HelixBuild>$(BUILD_BUILDNUMBER).$(SYSTEM_JOBATTEMPT)</HelixBuild>
+
+        <!-- Pack everything that can pack up front in CI builds. -->
+        <ProjectReferenceBuildTargets>Build;Pack</ProjectReferenceBuildTargets>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <!-- Creator is not valid for internal queues -->
+        <Creator Condition="'$(_UseHelixOpenQueues)' == 'true'">$(USERNAME)</Creator>
+        <Creator Condition="'$(USERNAME)' == '' AND '$(_UseHelixOpenQueues)' == 'true'">$(USER)</Creator>
+
+        <HelixType>dev</HelixType>
+        <HelixBuild>$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</HelixBuild>
+
+        <!--
+          Do not pack in local (RunHelix.ps1) builds. Packages can overwhelm home networks. Will use any packages
+          found on disk. (May make sense to delete artifacts/packages/ before doing local builds.) Since App.Ref
+          and App.Runtime always pack on build, those two packages will be used unless DoNotRequireSharedFxHelix
+          is true.
+        -->
+        <ProjectReferenceBuildTargets>Build</ProjectReferenceBuildTargets>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
 
   <!-- Items with the type "HelixProperties" will become arbitrary JSON associated with the job -->
   <!-- NOTE: These are global to the whole Job, so don't include project-specific content here. -->
@@ -75,13 +104,18 @@
     <HelixProperties Condition="'$(RunQuarantinedTests)' != 'true'" Include="runType" Value="unquarantined" />
   </ItemGroup>
 
-  <ItemGroup Condition="Exists('$(HelixTestConfigurationFilePath)')">
-    <HelixCorrelationPayload Include="$(HelixTestConfigurationFilePath)" AsArchive="false" />
-  </ItemGroup>
+  <!--
+    Use one of the NuGet.targets hooks to restore projects that do not use NuGet. Ignore .javaproj files because
+    they do not have a useful `Restore` target.
+  -->
+  <Target Name="RestoreNpmProjects" BeforeTargets="CollectPackageDownloads">
+    <ItemGroup>
+      <_ProjectsToRestore Include="@(ProjectReference)" Condition=" '%(Extension)' == '.npmproj' " />
+    </ItemGroup>
+    <MSBuild Projects="@(_ProjectsToRestore)" BuildInParallel="false" Targets="Restore" />
+  </Target>
 
-  <Target Name="IncludeAspNetRuntime" BeforeTargets="Gather"
-    Condition="'$(DoNotRequireSharedFxHelix)' != 'true' OR
-    EXISTS('$(RepoRoot)artifacts\packages\$(Configuration)\Shipping\Microsoft.AspNetCore.App.Runtime.$(TargetRuntimeIdentifier).$(SharedFxVersion).nupkg')">
+  <Target Name="IncludeAspNetRuntime" Condition=" '$(DoNotRequireSharedFxHelix)' != 'true' ">
     <MSBuild Projects="$(RepoRoot)src\Framework\App.Runtime\src\Microsoft.AspNetCore.App.Runtime.csproj"
         Properties="DisableYarnCheck=true;ExcludeFromBuild=false"
         Targets="_GetPackageVersionInfo">
@@ -107,11 +141,9 @@
     <Copy SourceFiles="$(OutputPath)\SharedFx.Unzip\Microsoft.AspNetCore.App.versions.txt"
         DestinationFiles="$(OutputPath)\SharedFx.Layout\shared\Microsoft.AspNetCore.App\$(SharedFxVersion)\.version" />
 
-    <Unzip Condition="Exists('$(RepoRoot)artifacts\packages\$(Configuration)\Shipping\Microsoft.AspNetCore.App.Ref.$(SharedFxVersion).nupkg')"
-      SourceFiles="$(RepoRoot)artifacts\packages\$(Configuration)\Shipping\Microsoft.AspNetCore.App.Ref.$(SharedFxVersion).nupkg"
+    <Unzip SourceFiles="$(RepoRoot)artifacts\packages\$(Configuration)\Shipping\Microsoft.AspNetCore.App.Ref.$(SharedFxVersion).nupkg"
       DestinationFolder="$(OutputPath)\SharedFx.Layout\packs\Microsoft.AspNetCore.App.Ref\$(SharedFxVersion)" />
-    <ZipDirectory Condition="Exists('$(OutputPath)\SharedFx.Layout')"
-      SourceDirectory="$(OutputPath)\SharedFx.Layout"
+    <ZipDirectory SourceDirectory="$(OutputPath)\SharedFx.Layout"
       DestinationFile="$(OutputPath)\SharedFx.Layout.zip" Overwrite="true" />
 
     <ItemGroup>
@@ -119,12 +151,16 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="Gather" BeforeTargets="Build">
+  <Target Name="_Gather">
     <MSBuild Projects="@(ProjectToBuild)"
-              Targets="CreateHelixPayload"
-              SkipNonexistentTargets="true">
+        BuildInParallel="%(ProjectToBuild.BuildInParallel)"
+        Targets="CreateHelixPayload"
+        SkipNonexistentTargets="true">
       <Output TaskParameter="TargetOutputs" ItemName="HelixWorkItem" />
     </MSBuild>
   </Target>
 
+  <Target Name="Gather"
+      BeforeTargets="Build"
+      DependsOnTargets="ResolveProjectReferences;_Gather;IncludeAspNetRuntime" />
 </Project>
