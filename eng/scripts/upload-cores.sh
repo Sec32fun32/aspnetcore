@@ -35,3 +35,14 @@ else
     echo "##vso[artifact.upload containerfolder=$artifactName;artifactname=$artifactName]$file"
   done
 fi
+
+echo "$wd:"
+ls -AF $wd
+echo ""
+
+for dir in /cores /var/cache/abrt /var/crash /var/lib/systemd/coredump /var/spool/abrt; do
+  if [ -d $dir ]; then
+    ls -AFR $dir
+    echo ""
+  fi
+done
