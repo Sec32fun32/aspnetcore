@@ -90,20 +90,6 @@
                          RepoRoot=$(RepoRoot)" />
   </Target>
 
-  <!-- Build the actual helix work items to send to helix queues -->
-  <Target Name="CreateHelixPayload" Returns="@(HelixWorkItem)">
-    <ItemGroup>
-      <_TargetFrameworks Remove="@(_TargetFrameworks)" />
-      <_TargetFrameworks Include="$(TargetFrameworks);$(TargetFramework)" />
-    </ItemGroup>
-
-    <MSBuild Projects="$(MSBuildProjectFullPath)"
-             Targets="_CreateHelixPayloadInner"
-             Properties="TargetFramework=%(_TargetFrameworks.Identity);">
-      <Output TaskParameter="TargetOutputs" ItemName="HelixWorkItem" />
-    </MSBuild>
-  </Target>
-
   <ItemGroup>
     <PackageReference Include="XunitXml.TestLogger" Version="2.1.26" />
   </ItemGroup>
@@ -121,41 +107,31 @@
     </Otherwise>
   </Choose>
 
-  <Target Name="_SetCreateHelixPayload">
-    <PropertyGroup>
-      <_SelectedPlatforms>@(HelixProjectPlatform)</_SelectedPlatforms>
-    </PropertyGroup>
+  <ItemGroup>
+    <_HelixTargetFrameworks Remove="@(_HelixTargetFrameworks)" />
+    <_HelixTargetFrameworks Include="$(TargetFrameworks);$(TargetFramework)" />
+  </ItemGroup>
 
-    <ItemGroup Condition="'$(_UseHelixOpenQueues)' != 'true'">
-      <_Temp Include="@(HelixAvailableTargetQueue)" />
-      <HelixAvailableTargetQueue Remove="@(HelixAvailableTargetQueue)" />
-      <HelixAvailableTargetQueue Include="@(_Temp->'%(Identity)'->Replace('.Open',''))" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <!-- Include default queues based on platform -->
-      <_HelixProjectTargetQueue Include="%(HelixAvailableTargetQueue.Identity)" Condition="'%(HelixAvailableTargetQueue.Identity)' != '' AND '$(_SelectedPlatforms.Contains(%(Platform)))' == 'true'" />
-
-      <_HelixApplicableTargetQueue Include="%(_HelixProjectTargetQueue.Identity)" Condition="'%(Identity)' == '$(HelixTargetQueue)'" />
-    </ItemGroup>
-
-    <PropertyGroup>
-      <BuildHelixPayload Condition="'@(_HelixApplicableTargetQueue->Count())' == '0'">false</BuildHelixPayload>
-      <BuildHelixPayload Condition="'$(IsArm64HelixQueue)' == 'true' AND '$(SkipHelixArm)' == 'true'">false</BuildHelixPayload>
-      <BuildHelixPayload Condition="$(HelixTargetQueue.StartsWith('%28Alpine.')) AND '$(SkipHelixAlpine)' == 'true'">false</BuildHelixPayload>
-      <BuildHelixPayload Condition="$(SkipHelixQueues.Contains('$(HelixTargetQueue)'))">false</BuildHelixPayload>
-    </PropertyGroup>
+  <!-- In outer builds, publish test project if it may send Helix work items. -->
+  <Target Name="CreateHelixPayload" Condition=" $(BuildHelixPayload) ">
+    <MSBuild Projects="$(MSBuildProjectFullPath)"
+             Targets="_PublishProject"
+             Properties="TargetFramework=%(_HelixTargetFrameworks.Identity);" />
   </Target>
 
-  <Target Name="_CreateHelixWorkItem" Condition="$(BuildHelixPayload)">
-    <PropertyGroup>
-      <!-- Extract the effective queue name from this format "(name)host@dockerimage". This is sometimes used in test code to skip tests.  -->
-      <_HelixFriendlyNameTargetQueue>$(HelixTargetQueue)</_HelixFriendlyNameTargetQueue>
-      <_HelixFriendlyNameTargetQueue Condition="$(HelixTargetQueue.Contains('@'))">$(HelixTargetQueue.Substring(1, $([MSBuild]::Subtract($(HelixTargetQueue.LastIndexOf(')')), 1))))</_HelixFriendlyNameTargetQueue>
-    </PropertyGroup>
+  <!-- In inner (per-queue) builds, build the actual helix work items for sending to helix queues. -->
+  <Target Name="CreateHelixPayload" Returns="@(HelixWorkItem)" Condition=" $(BuildHelixPayload) ">
+    <MSBuild Projects="$(MSBuildProjectFullPath)"
+             Targets="_CreateHelixPayloadInner"
+             Properties="TargetFramework=%(_HelixTargetFrameworks.Identity);">
+      <Output TaskParameter="TargetOutputs" ItemName="HelixWorkItem" />
+    </MSBuild>
+  </Target>
 
-    <!-- Important: If HelixTargetQueue is not removed here, then Publish will occur for every single queue type. And since Publish shouldn't depend on the queue we can just publish once -->
-    <MSBuild Projects="$(MSBuildProjectFullPath)" Targets="Publish" RemoveProperties="HelixTargetQueue;TestRunId" />
+  <!-- Once per TFM in outer builds, publish test project if it will send a Helix work item. -->
+  <Target Name="_PublishProject" Condition=" $(BuildHelixPayload) ">
+    <!-- Remove per-queue properties to avoid redoing previous builds. -->
+    <MSBuild Projects="$(MSBuildProjectFullPath)" Targets="Publish" RemoveProperties="TestRunId" />
 
     <!-- Isolate Helix tests from whatever happens to be in a parent directory. -->
     <Copy SourceFiles="$(RepoRoot)eng\helix\content\Directory.Build.empty.in"
@@ -192,6 +168,44 @@
         Retries="$(CopyRetryCount)"
         RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)"
         SkipUnchangedFiles="$(SkipCopyUnchangedFiles)" />
+  </Target>
+
+  <!--
+    In any innermost (per-queue / per-TFM) build, confirm the BuildHelixPayload value. Directly or indirectly,
+    everything checked in this target depends on the HelixTargetQueue property.
+  -->
+  <Target Name="_SetCreateHelixPayload" Condition=" $(BuildHelixPayload) ">
+    <ItemGroup Condition="'$(_UseHelixOpenQueues)' != 'true'">
+      <_Temp Include="@(HelixAvailableTargetQueue)" />
+      <HelixAvailableTargetQueue Remove="@(HelixAvailableTargetQueue)" />
+      <HelixAvailableTargetQueue Include="@(_Temp->'%(Identity)'->Replace('.Open',''))" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <!-- Include default queues based on platform -->
+      <_HelixProjectTargetQueue Include="%(HelixAvailableTargetQueue.Identity)"
+          Condition=" @(HelixProjectPlatform->AnyHaveMetadataValue('Identity', '%(HelixAvailableTargetQueue.Platform)')) " />
+      <_HelixApplicableTargetQueue Include="%(_HelixProjectTargetQueue.Identity)" Condition="'%(Identity)' == '$(HelixTargetQueue)'" />
+    </ItemGroup>
+
+    <PropertyGroup>
+      <BuildHelixPayload Condition="'@(_HelixApplicableTargetQueue->Count())' == '0'">false</BuildHelixPayload>
+      <BuildHelixPayload Condition="'$(IsArm64HelixQueue)' == 'true' AND '$(SkipHelixArm)' == 'true'">false</BuildHelixPayload>
+      <BuildHelixPayload Condition="$(HelixTargetQueue.StartsWith('%28Alpine.')) AND '$(SkipHelixAlpine)' == 'true'">false</BuildHelixPayload>
+      <BuildHelixPayload Condition="$(SkipHelixQueues.Contains('$(HelixTargetQueue)'))">false</BuildHelixPayload>
+    </PropertyGroup>
+  </Target>
+
+  <!--
+    In innermost (per-queue / per-TFM) build, relevant work item unless project or _SetCreateHelixPayload
+    overrode BuildHelixPayload.
+  -->
+  <Target Name="_CreateHelixWorkItem" Condition=" $(BuildHelixPayload) ">
+    <PropertyGroup>
+      <!-- Extract the effective queue name from this format "(name)host@dockerimage". This is sometimes used in test code to skip tests.  -->
+      <_HelixFriendlyNameTargetQueue>$(HelixTargetQueue)</_HelixFriendlyNameTargetQueue>
+      <_HelixFriendlyNameTargetQueue Condition="$(HelixTargetQueue.Contains('@'))">$(HelixTargetQueue.Substring(1, $([MSBuild]::Subtract($(HelixTargetQueue.LastIndexOf(')')), 1))))</_HelixFriendlyNameTargetQueue>
+    </PropertyGroup>
 
     <ConvertToAbsolutePath Paths="$(PublishDir)">
       <Output TaskParameter="AbsolutePaths" PropertyName="PublishAbsoluteDir" />
@@ -214,7 +228,6 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="_CreateHelixPayloadInner" Returns="@(HelixWorkItem)" DependsOnTargets="_SetCreateHelixPayload;_CreateHelixWorkItem">
-  </Target>
-
+  <Target Name="_CreateHelixPayloadInner" Returns="@(HelixWorkItem)"
+      DependsOnTargets="_SetCreateHelixPayload;_CreateHelixWorkItem" />
 </Project>
