@@ -5,6 +5,13 @@
       This must be reset in order for Build.props to evaluate a list of projects to be tested on Helix.
     -->
     <ProjectToBuild Condition="'$(ProjectToBuild)' == '$(MSBuildProjectFullPath)'" />
+
+    <!--
+      Do not load NuGet.targets since this project doesn't reference anything from NuGet. Not loading
+      NuGet.targets causes Arcade (when we're invoked from there) to use our Restore target. It also means
+      NuGet.targets doesn't override our Restore target (in RunHelix.ps1 cases).
+    -->
+    <IsRestoreTargetsFileLoaded>true</IsRestoreTargetsFileLoaded>
   </PropertyGroup>
 
   <Import Project="..\targets\Helix.Common.props" />
@@ -162,5 +169,5 @@
 
   <Target Name="Gather"
       BeforeTargets="Build"
-      DependsOnTargets="ResolveProjectReferences;_Gather;IncludeAspNetRuntime" />
+      DependsOnTargets="_Gather;IncludeAspNetRuntime" />
 </Project>
