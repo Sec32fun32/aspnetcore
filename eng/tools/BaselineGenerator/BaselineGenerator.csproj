@@ -4,6 +4,12 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
     <StartWorkingDirectory>$(MSBuildThisFileDirectory)../../</StartWorkingDirectory>
+    <StartArguments>--update</StartArguments>
+    <StartArguments>$(StartArguments) --package-sources https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-public/nuget/v3/index.json</StartArguments>
+    <StartArguments>$(StartArguments) --package-sources https://pkgs.dev.azure.com/dnceng/public/_packaging/general-testing/nuget/v3/index.json</StartArguments>
+    <StartArguments>$(StartArguments) --package-sources https://pkgs.dev.azure.com/dnceng/public/_packaging/darc-pub-dotnet-runtime-6a26733c/nuget/v3/index.json</StartArguments>
+    <StartArguments>$(StartArguments) --package-sources https://pkgs.dev.azure.com/dnceng/public/_packaging/darc-pub-dotnet-efcore-28d13b23/nuget/v3/index.json</StartArguments>
+    <StartArguments>$(StartArguments) --package-sources https://pkgs.dev.azure.com/dnceng/public/_packaging/darc-pub-dotnet-aspnetcore-b7efb85e/nuget/v3/index.json</StartArguments>
   </PropertyGroup>
 
   <ItemGroup>
