@@ -5,6 +5,18 @@
     <ExcludeFromSourceBuild>false</ExcludeFromSourceBuild>
 
     <ConfigDirectory>$([MSBuild]::NormalizeDirectory('$(RepoRoot)', '.config'))</ConfigDirectory>
+
+    <!--
+      Handle runtime versions before final SDK is available. This can happen when building against a non-stable
+      SDK (say, 7.0.100-rc.1.22431.12 or 7.0.100-rtm.22478.12) for RTM or first service release (7.0.0 or 7.0.1 here).
+    -->
+    <OverrideNETCoreDefaultInServicing>false</OverrideNETCoreDefaultInServicing>
+    <OverrideNETCoreDefaultInServicing Condition=" $(BundledNETCoreAppPackageVersion.Contains('-')) AND
+        !$(MicrosoftNETCoreAppRuntimeVersion.Contains('-'))">true</OverrideNETCoreDefaultInServicing>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(OverrideNETCoreDefaultInServicing)' == 'true' ">
+    <MicrosoftNETCoreAppRuntimeRTMVersion>$(MicrosoftNETCoreAppRuntimeVersion.Split(".")[0]).$(MicrosoftNETCoreAppRuntimeVersion.Split(".")[1]).0</MicrosoftNETCoreAppRuntimeRTMVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +36,9 @@
         MicrosoftAspNetCoreAppRuntimeVersion=$(SharedFxVersion);
         MicrosoftNETCoreAppRefVersion=$(MicrosoftNETCoreAppRefVersion);
         MicrosoftNETCoreAppRuntimeVersion=$(MicrosoftNETCoreAppRuntimeVersion);
+        MicrosoftNETCoreAppRuntimeRTMVersion=$(MicrosoftNETCoreAppRuntimeRTMVersion);
         MicrosoftPlaywrightCLIVersion=$(MicrosoftPlaywrightCLIVersion);
+        OverrideNETCoreDefaultInServicing=$(OverrideNETCoreDefaultInServicing);
         LibNetHostAppPackVersion=$(BundledNETCoreAppPackageVersion);
         SupportedRuntimeIdentifiers=$(SupportedRuntimeIdentifiers.Trim())
       </_TemplateProperties>

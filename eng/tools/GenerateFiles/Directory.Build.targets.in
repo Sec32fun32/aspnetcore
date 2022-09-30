@@ -14,16 +14,27 @@
       TargetFramework="${DefaultNetCoreTargetFramework}"
       Condition="'@(KnownAppHostPack->Count())' != '0' AND
         !(@(KnownAppHostPack->AnyHaveMetadataValue('TargetFramework', '${DefaultNetCoreTargetFramework}')))" />
-    <KnownRuntimePack
-      Include="@(KnownRuntimePack->WithMetadataValue('TargetFramework', 'net6.0'))"
+    <KnownCrossgen2Pack
+      Include="@(KnownCrossgen2Pack->WithMetadataValue('TargetFramework', 'net6.0'))"
       TargetFramework="${DefaultNetCoreTargetFramework}"
-      Condition="'@(KnownRuntimePack->Count())' != '0' AND
-        !(@(KnownRuntimePack->AnyHaveMetadataValue('TargetFramework', '${DefaultNetCoreTargetFramework}')))" />
+      Condition="'@(KnownCrossgen2Pack->Count())' != '0' AND
+        !(@(KnownCrossgen2Pack->AnyHaveMetadataValue('TargetFramework', '${DefaultNetCoreTargetFramework}')))" />
     <KnownFrameworkReference
       Include="@(KnownFrameworkReference->WithMetadataValue('TargetFramework', 'net6.0'))"
       TargetFramework="${DefaultNetCoreTargetFramework}"
       Condition="'@(KnownFrameworkReference->Count())' != '0' AND
         !(@(KnownFrameworkReference->AnyHaveMetadataValue('TargetFramework', '${DefaultNetCoreTargetFramework}')))" />
+    <!-- KnownILCompilerPack was introduced w/ net7.0 -->
+    <KnownILCompilerPack
+      Include="@(KnownILCompilerPack->WithMetadataValue('TargetFramework', 'net7.0'))"
+      TargetFramework="${DefaultNetCoreTargetFramework}"
+      Condition="'@(KnownILCompilerPack->Count())' != '0' AND
+        !(@(KnownILCompilerPack->AnyHaveMetadataValue('TargetFramework', '${DefaultNetCoreTargetFramework}')))" />
+    <KnownRuntimePack
+      Include="@(KnownRuntimePack->WithMetadataValue('TargetFramework', 'net6.0'))"
+      TargetFramework="${DefaultNetCoreTargetFramework}"
+      Condition="'@(KnownRuntimePack->Count())' != '0' AND
+        !(@(KnownRuntimePack->AnyHaveMetadataValue('TargetFramework', '${DefaultNetCoreTargetFramework}')))" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,13 +44,25 @@
     -->
     <FrameworkReference
       Update="Microsoft.NETCore.App"
-      Condition=" (('$(ProjectTargetFrameworkIdentifier)' == '${DefaultNetCoreTargetFramework}') AND '${DefaultNetCoreTargetFramework}' == '$(ProjectTargetFrameworkVersion)') AND '$(TargetLatestDotNetRuntime)' != 'false' "
+      Condition=" (('$(ProjectTargetFrameworkIdentifier)' == '${DefaultNetCoreTargetFramework}') AND
+          '${DefaultNetCoreTargetFramework}' == '$(ProjectTargetFrameworkVersion)') AND
+          '$(TargetLatestDotNetRuntime)' != 'false' "
       RuntimeFrameworkVersion="${MicrosoftNETCoreAppRuntimeVersion}"
       TargetingPackVersion="${MicrosoftNETCoreAppRefVersion}" />
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Use the same NETCore shared framework as repo built against except when building product code in servicing. -->
+    <!-- Use the same NETCore shared framework etc. as repo built against except when building product code in servicing. -->
+    <KnownAppHostPack Update="Microsoft.NETCore.App">
+      <AppHostPackVersion
+          Condition=" '%(TargetFramework)' == '${DefaultNetCoreTargetFramework}' ">${MicrosoftNETCoreAppRuntimeVersion}</AppHostPackVersion>
+    </KnownAppHostPack>
+
+    <KnownCrossgen2Pack Update="Microsoft.NETCore.App.Crossgen2">
+      <Crossgen2PackVersion
+          Condition=" '%(TargetFramework)' == '${DefaultNetCoreTargetFramework}' ">${MicrosoftNETCoreAppRuntimeVersion}</Crossgen2PackVersion>
+    </KnownCrossgen2Pack>
+
     <KnownFrameworkReference Update="Microsoft.NETCore.App">
       <LatestRuntimeFrameworkVersion
           Condition=" '%(TargetFramework)' == '${DefaultNetCoreTargetFramework}' ">${MicrosoftNETCoreAppRuntimeVersion}</LatestRuntimeFrameworkVersion>
@@ -56,12 +79,16 @@
       <DefaultRuntimeFrameworkVersion Condition=" '$(IsServicingBuild)' != 'true' AND
           '%(TargetFramework)' == '${DefaultNetCoreTargetFramework}' AND
           '$(TargetLatestDotNetRuntime)' != 'false' ">${MicrosoftNETCoreAppRuntimeVersion}</DefaultRuntimeFrameworkVersion>
+      <!-- Special case for when we've using a stable runtime version but a non-stable SDK. -->
+      <DefaultRuntimeFrameworkVersion Condition=" '$(IsServicingBuild)' == 'true' AND
+          '%(TargetFramework)' == '${DefaultNetCoreTargetFramework}' AND
+          '${OverrideNETCoreDefaultInServicing}' == 'true' ">${MicrosoftNETCoreAppRuntimeRTMVersion}</DefaultRuntimeFrameworkVersion>
     </KnownFrameworkReference>
 
-    <KnownAppHostPack Update="Microsoft.NETCore.App">
-      <AppHostPackVersion
-        Condition=" '%(TargetFramework)' == '${DefaultNetCoreTargetFramework}' ">${MicrosoftNETCoreAppRuntimeVersion}</AppHostPackVersion>
-    </KnownAppHostPack>
+    <KnownILCompilerPack Update="Microsoft.DotNet.ILCompiler">
+      <ILCompilerPackVersion
+          Condition=" '%(TargetFramework)' == '${DefaultNetCoreTargetFramework}' ">${MicrosoftNETCoreAppRuntimeVersion}</ILCompilerPackVersion>
+    </KnownILCompilerPack>
 
     <KnownRuntimePack Update="Microsoft.NETCore.App">
       <LatestRuntimeFrameworkVersion
