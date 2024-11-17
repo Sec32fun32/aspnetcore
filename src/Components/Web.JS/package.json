@@ -29,7 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
     "babel-jest": "^27.1.0",
-    "eslint": "^7.32.0",
+    "eslint": "^9.15.0",
     "inspectpack": "^4.7.1",
     "jest": "^27.1.0",
     "rimraf": "^3.0.2",
