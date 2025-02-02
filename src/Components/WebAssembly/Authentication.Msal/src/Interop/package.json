@@ -16,7 +16,7 @@
     "@babel/preset-env": "^7.15.0",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
-    "eslint": "^7.32.0",
+    "eslint": "^9.15.0",
     "inspectpack": "^4.7.1",
     "rimraf": "^3.0.2",
     "terser": "^5.7.2",
